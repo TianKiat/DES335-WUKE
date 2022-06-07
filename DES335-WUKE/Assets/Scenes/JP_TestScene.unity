@@ -359,8 +359,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1723427287, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
-      propertyPath: ReloadTime
-      value: 10
+      propertyPath: BulletPrefab
+      value: 
+      objectReference: {fileID: 1855295144073483228, guid: d8a1a1dd468d9414381814fe52115265, type: 3}
+    - target: {fileID: 1723427287, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: DefaultBulletSpread
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723427287, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: MovementBulletSpread
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745404671266512404, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: ReloadMoveSpeedModifier
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 5745404672243191249, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
       propertyPath: m_RootOrder

@@ -8,8 +8,6 @@ public class BaseWeapon : MonoBehaviour
     [SerializeField]
     private float FireInterval = 0.1f;
     [SerializeField]
-    private float DamagePerBullet = 5.0f;
-    [SerializeField]
     private float DefaultBulletSpread = 1.1f;
     [SerializeField]
     private float MovementBulletSpread = 1.2f;
@@ -20,12 +18,15 @@ public class BaseWeapon : MonoBehaviour
 
     [SerializeField]
     private GameObject BulletPrefab = null;
+    [SerializeField]
+    private float DamagePerBullet = 5.0f;
+    [SerializeField]
+    private float BulletSpeed = 20.0f;
 
     public enum States
     {
         Static,
         Moving,
-        Reloading
     }
 
     private StateMachine<States, StateDriverUnity> fsm;
@@ -43,6 +44,9 @@ public class BaseWeapon : MonoBehaviour
         NextFireTime = Time.time + FireInterval;
         CurrentReloadTime = 0.0f;
 
+        if (BulletPrefab == null)
+            Debug.LogException(new System.ArgumentNullException("Assign BulletPrefab GameObject before continuing!"));
+
         // initialize statemachine
         fsm = new StateMachine<States, StateDriverUnity>(this);
         fsm.ChangeState(States.Static);
@@ -50,33 +54,38 @@ public class BaseWeapon : MonoBehaviour
 
     void Update()
     {
-        fsm.Driver.Update.Invoke();
+        // fsm.Driver.Update.Invoke();
+        Reloading_Update();
     }
 
     // Change the state of the weapon
     public void ReloadWeapon()
     {
-            fsm.ChangeState(States.Reloading);
-    }
-
-    public void IsPersonMoving(bool isMoving)
-    {
-        if (isMoving)
-            fsm.ChangeState(States.Moving);
-        else
-            fsm.ChangeState(States.Static);
+        Reloading_Enter();
     }
 
     public virtual void FireWeapon()
     {
-        if (Time.time >= NextFireTime)
+        // Fire weapon if not reloading and passed the next fire time
+        if (!isReloading && Time.time >= NextFireTime)
         {
-            // apply bullet spread
+            float spread = DefaultBulletSpread;
+            if (fsm.State == States.Moving)
+                spread = MovementBulletSpread;
+            // apply bullet spread and fire bullet
+            GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
+            bullet.transform.Rotate(0, 0, Random.Range(-spread, spread));
+            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * BulletSpeed;
+
+            var bulletComponent = bullet.GetComponent<BaseBullet>();
+            bulletComponent.Damage = DamagePerBullet;
+            bulletComponent.IsPlayerBullet = true;
 
             // spawn bullet with damage
-            Debug.Log("Fired Bullet");
             --CurrentMagazineCapacity;
-
+            Debug.Log("Fired Bullet, magazine now at: " + CurrentMagazineCapacity + "/" + MagazineCapacity);
+            if (CurrentMagazineCapacity <= 0)
+                Reloading_Enter();
             NextFireTime = Time.time + FireInterval;
         }
     }
@@ -98,14 +107,13 @@ public class BaseWeapon : MonoBehaviour
 
     private void Reloading_Update()
     {
-        Debug.Log("Reloading");
-        CurrentReloadTime += Time.deltaTime;
-        if (CurrentReloadTime > ReloadTime)
+        if (isReloading)
         {
-            CurrentMagazineCapacity = MagazineCapacity;
-
-            // finish reloading and transition to last state
-            fsm.ChangeState(fsm.LastState);
+            CurrentReloadTime += Time.deltaTime;
+            Debug.Log("Reloading: " + GetReloadProgress() + "% done.");
+            if (CurrentReloadTime > ReloadTime)
+                // finish reloading and transition to last state
+                Reloading_Exit();
         }
     }
 
@@ -114,6 +122,7 @@ public class BaseWeapon : MonoBehaviour
         Debug.Log("Finished Reload");
         CurrentReloadTime = ReloadTime;
         isReloading = false;
+        CurrentMagazineCapacity = MagazineCapacity;
     }
 
     public bool GetIsReloading()
@@ -124,5 +133,13 @@ public class BaseWeapon : MonoBehaviour
     public float GetReloadProgress()
     {
         return CurrentReloadTime / ReloadTime;
+    }
+
+    public void IsPersonMoving(bool isMoving)
+    {
+        if (isMoving)
+            fsm.ChangeState(States.Moving);
+        else
+            fsm.ChangeState(States.Static);
     }
 }
