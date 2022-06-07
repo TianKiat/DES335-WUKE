@@ -36,12 +36,15 @@ public class BaseWeapon : MonoBehaviour
     private float NextFireTime;
     private bool isReloading = false;
     public int CurrentMagazineCapacity { get; private set; }
+    public float DamagePerBulletModifier { get; set; } = 1.0f;
+    public float ReloadTimeModifier { get; set; } = 1.0f;
+    public float FireIntervalModifier { get; set; } = 1.0f;
 
     private void Awake()
     {
 
         CurrentMagazineCapacity = MagazineCapacity;
-        NextFireTime = Time.time + FireInterval;
+        NextFireTime = FireInterval * FireIntervalModifier + Time.time;
         CurrentReloadTime = 0.0f;
 
         if (BulletPrefab == null)
@@ -78,7 +81,7 @@ public class BaseWeapon : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * BulletSpeed;
 
             var bulletComponent = bullet.GetComponent<BaseBullet>();
-            bulletComponent.Damage = DamagePerBullet;
+            bulletComponent.Damage = DamagePerBullet * DamagePerBulletModifier;
             bulletComponent.IsPlayerBullet = true;
 
             // spawn bullet with damage
@@ -111,7 +114,7 @@ public class BaseWeapon : MonoBehaviour
         {
             CurrentReloadTime += Time.deltaTime;
             Debug.Log("Reloading: " + GetReloadProgress() + "% done.");
-            if (CurrentReloadTime > ReloadTime)
+            if (CurrentReloadTime > ReloadTime * ReloadTimeModifier)
                 // finish reloading and transition to last state
                 Reloading_Exit();
         }
