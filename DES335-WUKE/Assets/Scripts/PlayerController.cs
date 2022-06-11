@@ -49,8 +49,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Handle movement
-        rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
 
         weaponSystem.GetCurrentWeapon().IsPersonMoving(input_vec.sqrMagnitude >= 0.001f);
 
@@ -59,6 +57,11 @@ public class PlayerController : MonoBehaviour
             CurrentMoveSpeed = DefaultMoveSpeed * ReloadMoveSpeedModifier;
         else
             CurrentMoveSpeed = DefaultMoveSpeed;
+
+        if (GameManager.Instance.GetPauseState()) return;
+
+        // Handle movement
+        rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
 
         if (isFiring)
             weaponSystem.FireWeapon();

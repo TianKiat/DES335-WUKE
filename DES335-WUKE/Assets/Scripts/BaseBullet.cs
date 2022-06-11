@@ -9,6 +9,11 @@ public class BaseBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        OnHitResponse(collision.otherCollider.gameObject);
+    }
+
+    public virtual void OnHitResponse(GameObject other)
+    {
         // Deal Damage here
         if (IsPlayerBullet)
         {
@@ -18,6 +23,5 @@ public class BaseBullet : MonoBehaviour
         {
             // only deal damage to player types
         }
-
     }
 }

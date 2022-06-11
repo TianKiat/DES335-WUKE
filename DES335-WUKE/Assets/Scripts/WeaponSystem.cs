@@ -9,9 +9,6 @@ public class WeaponSystem : MonoBehaviour
     private int currentWeaponIndex = 0;
 
     private int[] currentWeaponLoadOut = { 0, 1};
-    public void Start()
-    {
-    }
 
     public void FireWeapon()
     {

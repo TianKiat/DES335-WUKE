@@ -57,6 +57,8 @@ public class BaseWeapon : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.GetPauseState())
+            return;
         // fsm.Driver.Update.Invoke();
         Reloading_Update();
     }
