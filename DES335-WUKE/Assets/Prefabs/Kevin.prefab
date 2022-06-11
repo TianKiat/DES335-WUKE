@@ -102,7 +102,7 @@ MonoBehaviour:
   MovementBulletSpread: 1.2
   MagazineCapacity: 30
   ReloadTime: 1
-  BulletPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 1855295144073483228, guid: c9e935a9617294b49983526e6c2f329f, type: 3}
   DamagePerBullet: 5
   BulletSpeed: 20
 --- !u!1 &5745404671333860178
@@ -207,7 +207,7 @@ MonoBehaviour:
   MovementBulletSpread: 1.2
   MagazineCapacity: 30
   ReloadTime: 1
-  BulletPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 1855295144073483228, guid: d8a1a1dd468d9414381814fe52115265, type: 3}
   DamagePerBullet: 5
   BulletSpeed: 20
 --- !u!1 &5745404671363405568
@@ -346,7 +346,7 @@ MonoBehaviour:
   MovementBulletSpread: 1.2
   MagazineCapacity: 30
   ReloadTime: 1
-  BulletPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 1855295144073483228, guid: 2f6ccb12abdd8bf4b9668ba087440924, type: 3}
   DamagePerBullet: 5
   BulletSpeed: 20
 --- !u!1 &5745404671951396372

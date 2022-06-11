@@ -1203,17 +1203,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 213631096, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
-      propertyPath: BulletPrefab
-      value: 
-      objectReference: {fileID: 1855295144073483228, guid: d8a1a1dd468d9414381814fe52115265, type: 3}
+      propertyPath: FireInterval
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 394377808, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
-      propertyPath: BulletPrefab
-      value: 
-      objectReference: {fileID: 1855295144073483228, guid: d8a1a1dd468d9414381814fe52115265, type: 3}
+      propertyPath: FireInterval
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1723427287, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
-      propertyPath: BulletPrefab
-      value: 
-      objectReference: {fileID: 1855295144073483228, guid: d8a1a1dd468d9414381814fe52115265, type: 3}
+      propertyPath: FireInterval
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745404671114169758, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: m_Name
+      value: Poopy_Finger_Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745404671333860178, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: m_Name
+      value: Finger_Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745404671363405569, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745404671371687647, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: m_Name
+      value: Ghostly_Finger_Pistol
+      objectReference: {fileID: 0}
     - target: {fileID: 5745404672243191249, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1264,6 +1280,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+--- !u!1 &800402116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5745404672243191250, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+  m_PrefabInstance: {fileID: 800402115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &800402117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800402116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: dd2470cb518dd5d4aa4e80dba0aa8d8f, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &879315520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,7 +3201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1747638606
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(WeaponSystem))]
@@ -22,8 +23,10 @@ public class PlayerController : MonoBehaviour
     private float CurrentHealth;
     private Rigidbody2D rb;
     private WeaponSystem weaponSystem;
+    private PlayerInput playerInput;
 
     private Vector2 input_vec;
+    private bool isFiring;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,8 +37,11 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true;
 
         weaponSystem = GetComponent<WeaponSystem>();
+        playerInput = GetComponent<PlayerInput>();
 
         input_vec = Vector2.zero;
+
+        
 
         if (WeaponPivot == null)
             Debug.LogException(new System.ArgumentNullException("Assign Weapon Pivot GameObject before continuing!"));
@@ -43,42 +49,50 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // capture input for movement
-        input_vec.x = Input.GetAxis("Horizontal");
-        input_vec.y = Input.GetAxis("Vertical");
-        input_vec.Normalize();
-
-        // call weapon system for shooting
-        if (Input.GetButton("Fire1"))
-            weaponSystem.FireWeapon();
-
-        if (Input.GetButtonDown("Reload"))
-            weaponSystem.ReloadWeapon();
+        // Handle movement
+        rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
 
         weaponSystem.GetCurrentWeapon().IsPersonMoving(input_vec.sqrMagnitude >= 0.001f);
 
-        UpdateWeaponPivot();
 
         if (weaponSystem.IsReloading())
             CurrentMoveSpeed = DefaultMoveSpeed * ReloadMoveSpeedModifier;
         else
             CurrentMoveSpeed = DefaultMoveSpeed;
+
+        if (isFiring)
+            weaponSystem.FireWeapon();
+
     }
 
-    void FixedUpdate()
+    void OnMove(InputValue input)
     {
-        HandleMovement();
+        input_vec = input.Get<Vector2>();
     }
 
-    void HandleMovement()
+    void OnMousePosition(InputValue input)
     {
-        rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
-    }
-
-    void UpdateWeaponPivot()
-    {
-        Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(WeaponPivot.position);
+        
+        Vector2 dir = playerInput.camera.ScreenToWorldPoint(input.Get<Vector2>()) -transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         WeaponPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        WeaponPivot.localScale = new Vector3(1.0f, dir.x < 0 ? -1.0f : 1.0f, 1.0f);
     }
+
+    void OnFire(InputValue input)
+    {
+        isFiring = input.isPressed;
+    }
+
+    void OnReload()
+    {
+        weaponSystem.ReloadWeapon();
+    }
+
+    void OnSwitchWeapon()
+    {
+        weaponSystem.SwitchWeapon();
+    }
+
 }
