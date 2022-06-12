@@ -36,9 +36,11 @@ public class BaseWeapon : MonoBehaviour
     private float NextFireTime;
     private bool isReloading = false;
     public int CurrentMagazineCapacity { get; private set; }
-    public float DamagePerBulletModifier { get; set; } = 1.0f;
-    public float ReloadTimeModifier { get; set; } = 1.0f;
+    public float WeaponDamageMod { get; set; } = 0.0f;
+    public float ReloadTimeModifier { get; set; } = 0.0f;
     public float FireIntervalModifier { get; set; } = 1.0f;
+
+    private float AdditionalReloadSpeedMod = 0.0f;
 
     private void Awake()
     {
@@ -64,12 +66,13 @@ public class BaseWeapon : MonoBehaviour
     }
 
     // Change the state of the weapon
-    public void ReloadWeapon()
+    public void ReloadWeapon(float addReloadSpdMod = 0.0f)
     {
+        AdditionalReloadSpeedMod = addReloadSpdMod;
         Reloading_Enter();
     }
 
-    public virtual void FireWeapon()
+    public virtual void FireWeapon(float addDamageMod = 0.0f)
     {
         // Fire weapon if not reloading and passed the next fire time
         if (!isReloading && Time.time >= NextFireTime)
@@ -83,7 +86,8 @@ public class BaseWeapon : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * BulletSpeed;
 
             var bulletComponent = bullet.GetComponent<BaseBullet>();
-            bulletComponent.Damage = DamagePerBullet * DamagePerBulletModifier;
+            // total bullet damage = baseDamage * (1.0f + ModifierFromThisWeapon + ModifierFromPlayerStat)
+            bulletComponent.Damage = DamagePerBullet * (1.0f + WeaponDamageMod + addDamageMod);
             bulletComponent.IsPlayerBullet = true;
 
             // spawn bullet with damage
@@ -116,7 +120,7 @@ public class BaseWeapon : MonoBehaviour
         {
             CurrentReloadTime += Time.deltaTime;
             Debug.Log("Reloading: " + GetReloadProgress() + "% done.");
-            if (CurrentReloadTime > ReloadTime * ReloadTimeModifier)
+            if (CurrentReloadTime > ReloadTime * (1.0f - ReloadTimeModifier - AdditionalReloadSpeedMod))
                 // finish reloading and transition to last state
                 Reloading_Exit();
         }

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private bool isGamePaused = false;
+    [SerializeField]
+    public PlayerController PlayerInstance = null;
 
 
     private void Awake()

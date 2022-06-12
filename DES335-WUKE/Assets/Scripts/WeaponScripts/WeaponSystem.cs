@@ -10,16 +10,19 @@ public class WeaponSystem : MonoBehaviour
 
     private int[] currentWeaponLoadOut = { 0, 1};
 
+    public float WeaponsDamageModifier { get; set; } = 0.0f;
+    public float ReloadSpeedModifier { get; set; } = 0.0f;
+
     public void FireWeapon()
     {
         if (currentWeaponIndex >= 0 && currentWeaponIndex < currentWeaponLoadOut.Length)
-            WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].FireWeapon();
+            WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].FireWeapon(WeaponsDamageModifier);
     }
 
     public void ReloadWeapon()
     {
         if (currentWeaponIndex >= 0 && currentWeaponIndex < currentWeaponLoadOut.Length)
-            WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].ReloadWeapon();
+            WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].ReloadWeapon(ReloadSpeedModifier);
     }
 
     public void SwitchWeapon()
