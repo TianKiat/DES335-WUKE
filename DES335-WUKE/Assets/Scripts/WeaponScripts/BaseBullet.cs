@@ -24,11 +24,16 @@ public class BaseBullet : MonoBehaviour
             BaseEnemy baseEnemy = other.GetComponent<BaseEnemy>();
             // only deal damage to enemy types
             if (baseEnemy != null)
+            {
                 baseEnemy.TakeDamage(Damage);
+                Destroy(gameObject);
+            }
+
         }
         else if (other == GameManager.Instance.PlayerInstance.gameObject)
         {
             GameManager.Instance.PlayerInstance.TakeDamage(Damage);
+            Destroy(gameObject);
         }
 
         other.GetComponent<Rigidbody2D>().AddForce(

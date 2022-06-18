@@ -621,6 +621,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308410737}
   m_CullTransparentMesh: 1
+--- !u!114 &331006173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 394377808, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+  m_PrefabInstance: {fileID: 800402115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8957c0c7d119c41acc9400aa85e563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &503294180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1213,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 362501026, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: WeaponLoadOut.Array.data[1]
+      value: 
+      objectReference: {fileID: 331006173}
+    - target: {fileID: 362501026, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: WeaponLoadOut.Array.data[2]
+      value: 
+      objectReference: {fileID: 884666370}
     - target: {fileID: 800402117, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1347,6 +1366,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879315520}
   m_CullTransparentMesh: 1
+--- !u!114 &884666370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 213631096, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+  m_PrefabInstance: {fileID: 800402115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8957c0c7d119c41acc9400aa85e563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &889209263
 GameObject:
   m_ObjectHideFlags: 0

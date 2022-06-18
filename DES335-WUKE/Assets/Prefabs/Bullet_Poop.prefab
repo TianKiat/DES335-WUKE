@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6376378178227552066}
   - component: {fileID: -7430508582125163572}
-  - component: {fileID: -8185643793572314415}
   - component: {fileID: -8565463416786711344}
+  - component: {fileID: -3862718457568390730}
   m_Layer: 0
   m_Name: Bullet_Poop
   m_TagString: Untagged
@@ -56,18 +56,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8185643793572314415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855295144073483228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0766d4cbb3d4dac4e9939e2a1e4234b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &-8565463416786711344
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -84,6 +72,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!114 &-3862718457568390730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855295144073483228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8f284becc232c419a3e8001a78db19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7718140403042792938
 GameObject:
   m_ObjectHideFlags: 0

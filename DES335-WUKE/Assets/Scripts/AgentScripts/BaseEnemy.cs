@@ -64,4 +64,9 @@ public class BaseEnemy : MonoBehaviour
     {
         DamageModifier = mod;
     }
+
+    public void ApplyDOT(IEnumerator DOTCoroutine)
+    {
+        StartCoroutine(DOTCoroutine);
+    }
 }
