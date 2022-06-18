@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 748811262950083150, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3120939
+      objectReference: {fileID: 0}
+    - target: {fileID: 748811262950083150, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+      propertyPath: m_Color.g
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 748811262950083150, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+      propertyPath: m_Color.r
+      value: 0.24630654
+      objectReference: {fileID: 0}
     - target: {fileID: 748811263594855528, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -17,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 748811263594855528, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.51
+      value: 3.72
       objectReference: {fileID: 0}
     - target: {fileID: 748811263594855528, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
       propertyPath: m_LocalPosition.z
@@ -55,5 +67,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfestedRatEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 748811263594855529, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+--- !u!1 &4797683087078399964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3545583963559533473, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+  m_PrefabInstance: {fileID: 8331864427191895165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8774407822811953171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 748811263594855534, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+  m_PrefabInstance: {fileID: 8331864427191895165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1501658958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774407822811953171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48764934782622f43b860f02aee32048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseHealth: 40
+  Damage: 4
+  PartyHat: {fileID: 4797683087078399964}
+  rotationstep: 3
+  moveSpeed: 1
+  knockBackForce: 20
+  AttackDelay: 1
+  chaseDelay: 2.5
+  wormsToSpawn: 5
+  worm: {fileID: 1640966383870464492, guid: e325ce95971d56343bc2f928edd70c16, type: 3}

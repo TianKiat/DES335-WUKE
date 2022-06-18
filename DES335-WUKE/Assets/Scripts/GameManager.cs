@@ -55,4 +55,54 @@ public class GameManager : MonoBehaviour
         Debug.Log("Deregistered " + enemy.gameObject.name);
     }
 
+    public void SetDreamPotEffect(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                {
+                    PlayerInstance.ActivateHat();
+                    foreach (BaseEnemy enemy in activeEnemies)
+                    {
+                        enemy.ActivateHat();
+                    }
+                }
+                break;
+            case 1:
+                {
+                    PlayerInstance.ActivatePee();
+                }
+                break;
+            case 2:
+                {
+                    PlayerInstance.ActivateFart();
+                }
+                break;
+            case 3:
+                //FoolsGold();
+                break;
+            case 4:
+                //Epiphany();
+                break;
+            case 5:
+                {
+                    // weapons do 20% more damage
+                    PlayerInstance.GetComponent<WeaponSystem>().WeaponsDamageModifier += 0.2f;
+                }
+                break;
+            case 6:
+                //GreedyGrubs();
+                break;
+            case 7:
+                //GymRats();
+                break;
+            case 8:
+                //Japanese();
+                break;
+            default:
+                Debug.Log("This dreampot index is not supported!");
+                break;
+        }
+    }
+
 }

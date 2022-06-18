@@ -19,6 +19,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform WeaponPivot;
 
+    [SerializeField]
+    private GameObject PeeTrail;
+    [SerializeField]
+    private GameObject PartyHat;
+
+    private bool isFarting = false;
+
     // Stats...
     private static Dictionary<string, int> PlayerStats = new Dictionary<string, int>
     {
@@ -55,6 +62,10 @@ public class PlayerController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
 
         input_vec = Vector2.zero;
+
+        // diable dreampot props
+        PeeTrail.SetActive(false);
+        PartyHat.SetActive(false);
 
         if (WeaponPivot == null)
             Debug.LogException(new System.ArgumentNullException("Assign Weapon Pivot GameObject before continuing!"));
@@ -155,8 +166,25 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player took damage, health = " + CurrentHealth);
         CurrentHealth -= damage;
         isTakingDamage = true;
+        if (isFarting)
+        {
+            // play farting noise and vfx
+        }
         if (CurrentHealth <= 0)
             GameManager.Instance.GameOver();
     }
 
+    public void ActivatePee()
+    {
+        PeeTrail.SetActive(true);
+    }
+    public void ActivateHat()
+    {
+        PartyHat.SetActive(true);
+    }
+
+    public void ActivateFart()
+    {
+        isFarting = true;
+    }
 }

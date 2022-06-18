@@ -6,15 +6,19 @@ using MonsterLove.StateMachine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BaseEnemy : MonoBehaviour
 {
-
-    public float BaseHealth = 100.0f;
-    public float Damage = 2.0f;
+    [SerializeField]
+    protected float BaseHealth = 100.0f;
+    [SerializeField]
+    protected float Damage = 2.0f;
 
     protected float CurrentHealth;
     protected float MaxHealth;
     protected float DamageModifier = 0.0f;
 
     protected Rigidbody2D rb;
+
+    [SerializeField]
+    private GameObject PartyHat;
 
     protected enum States
     {
@@ -40,6 +44,7 @@ public class BaseEnemy : MonoBehaviour
     public virtual void Start()
     {
         GameManager.Instance.RegisterEnemy(this);
+        PartyHat.SetActive(false);
     }
 
     // Update is called once per frame
@@ -68,5 +73,10 @@ public class BaseEnemy : MonoBehaviour
     public void ApplyDOT(IEnumerator DOTCoroutine)
     {
         StartCoroutine(DOTCoroutine);
+    }
+
+    public void ActivateHat()
+    {
+        PartyHat.SetActive(true);
     }
 }
