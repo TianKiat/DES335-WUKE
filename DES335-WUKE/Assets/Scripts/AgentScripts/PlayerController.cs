@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private float BaseMoveSpeed = 4.0f;
     [SerializeField, Range(0, 1), Tooltip("Percentage modifier")]
     private float ReloadMoveSpeedModifier = 0.85f;
+    [SerializeField]
+    private float DamageRecoveryTime = 0.85f;
 
     [SerializeField]
     private Transform WeaponPivot;
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 input_vec;
     private bool isFiring;
+    private bool isTakingDamage;
+    private float recoveryTime;
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,7 +53,6 @@ public class PlayerController : MonoBehaviour
         // Initialize runtime variables
         CurrentHealth = MaxHealth;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        rb.isKinematic = true;
 
         input_vec = Vector2.zero;
 
@@ -71,7 +74,19 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance.GetPauseState()) return;
 
         // Handle movement
-        rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
+        if (!isTakingDamage)
+        {
+            rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            recoveryTime += Time.deltaTime;
+            if (recoveryTime >= DamageRecoveryTime)
+            {
+                isTakingDamage = false;
+                recoveryTime = 0.0f;
+            }
+        }
 
         if (isFiring)
             weaponSystem.FireWeapon();
@@ -133,6 +148,15 @@ public class PlayerController : MonoBehaviour
         weaponSystem.WeaponsDamageModifier = 0.05f * PlayerStats["lcd"];
         CurrentMoveSpeed = BaseMoveSpeed + (PlayerStats["cog"] * 0.005f * BaseMoveSpeed);
         weaponSystem.ReloadSpeedModifier = 0.01f * PlayerStats["cog"];
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("Player took damage, health = " + CurrentHealth);
+        CurrentHealth -= damage;
+        isTakingDamage = true;
+        if (CurrentHealth <= 0)
+            GameManager.Instance.GameOver();
     }
 
 }

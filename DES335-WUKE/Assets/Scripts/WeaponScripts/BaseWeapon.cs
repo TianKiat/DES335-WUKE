@@ -72,7 +72,7 @@ public class BaseWeapon : MonoBehaviour
         Reloading_Enter();
     }
 
-    public virtual void FireWeapon(float addDamageMod = 0.0f)
+    public virtual BaseBullet FireWeapon(float addDamageMod = 0.0f)
     {
         // Fire weapon if not reloading and passed the next fire time
         if (!isReloading && Time.time >= NextFireTime)
@@ -96,7 +96,10 @@ public class BaseWeapon : MonoBehaviour
             if (CurrentMagazineCapacity <= 0)
                 Reloading_Enter();
             NextFireTime = Time.time + FireInterval;
+            return bulletComponent;
         }
+
+        return null;
     }
 
     private void Static_Enter()
