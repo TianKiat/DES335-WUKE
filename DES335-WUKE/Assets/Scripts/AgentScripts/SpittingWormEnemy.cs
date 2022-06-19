@@ -20,7 +20,7 @@ public class SpittingWormEnemy : BaseEnemy
         base.Start();
         GetComponent<Rigidbody2D>().isKinematic = true;
 
-        radiusSqr = (range * 0.5f) * (range * 0.5f);
+        radiusSqr = (range * range);
 
         playerTransform = GameManager.Instance.PlayerInstance.transform;
 

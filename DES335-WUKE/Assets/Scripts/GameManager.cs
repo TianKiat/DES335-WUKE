@@ -94,10 +94,21 @@ public class GameManager : MonoBehaviour
                 //GreedyGrubs();
                 break;
             case 7:
-                //GymRats();
+                {
+                    foreach (BaseEnemy enemy in activeEnemies)
+                    {
+                        enemy.ActivateGymRat();
+                    }
+                }
                 break;
             case 8:
-                //Japanese();
+                {
+                    PlayerInstance.Activatejapanese();
+                    foreach (BaseEnemy enemy in activeEnemies)
+                    {
+                        enemy.Activatejapanese();
+                    }
+                }
                 break;
             default:
                 Debug.Log("This dreampot index is not supported!");

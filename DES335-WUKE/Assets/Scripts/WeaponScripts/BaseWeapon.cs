@@ -12,7 +12,7 @@ public class BaseWeapon : MonoBehaviour
     [SerializeField]
     private float MovementBulletSpread = 1.2f;
     [SerializeField]
-    private int MagazineCapacity = 30;
+    public int MagazineCapacity = 30;
     [SerializeField]
     private float ReloadTime = 1.0f;
 

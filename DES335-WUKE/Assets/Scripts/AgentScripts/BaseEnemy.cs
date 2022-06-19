@@ -19,7 +19,10 @@ public class BaseEnemy : MonoBehaviour
 
     [SerializeField]
     private GameObject PartyHat;
-
+    [SerializeField]
+    private HealthBar healthbar;
+    [SerializeField]
+    private GameObject buffIcon;
     protected enum States
     {
         Idle,
@@ -63,6 +66,7 @@ public class BaseEnemy : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         CurrentHealth -= damage;
+        healthbar.UpdateHealth(CurrentHealth / MaxHealth);
     }
 
     public virtual void SetDamageModifier(float mod)
@@ -78,5 +82,18 @@ public class BaseEnemy : MonoBehaviour
     public void ActivateHat()
     {
         PartyHat.SetActive(true);
+    }
+
+    public void Activatejapanese()
+    {
+        healthbar.gameObject.SetActive(false);
+    }
+
+    public void ActivateGymRat()
+    {
+        DamageModifier += 0.1f;
+
+        // add buff icon
+        buffIcon.SetActive(true);
     }
 }

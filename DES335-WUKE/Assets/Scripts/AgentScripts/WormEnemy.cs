@@ -77,6 +77,8 @@ public class WormEnemy : BaseEnemy
             default:
                 break;
         }
+
+        transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z);
     }
 
     void Dying_Enter()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WeaponSystem : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class WeaponSystem : MonoBehaviour
     private BaseWeapon[] WeaponLoadOut;
     private int currentWeaponIndex = 0;
 
-    private int[] currentWeaponLoadOut = { 0, 1};
+    private int[] currentWeaponLoadOut = { 0, 1 };
 
     public float WeaponsDamageModifier { get; set; } = 0.0f;
     public float ReloadSpeedModifier { get; set; } = 0.0f;
+
+    public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI reloadText;
 
     public void FireWeapon()
     {
@@ -58,5 +62,16 @@ public class WeaponSystem : MonoBehaviour
             return WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]];
 
         return null;
+    }
+
+    private void Update()
+    {
+        // update ammo text
+        ammoText.text = "Mag: " + WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].CurrentMagazineCapacity
+            + " / " + WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].MagazineCapacity;
+
+
+        reloadText.gameObject.SetActive(IsReloading());
+
     }
 }

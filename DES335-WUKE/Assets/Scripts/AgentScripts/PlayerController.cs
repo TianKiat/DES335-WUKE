@@ -23,8 +23,11 @@ public class PlayerController : MonoBehaviour
     private GameObject PeeTrail;
     [SerializeField]
     private GameObject PartyHat;
+    [SerializeField]
+    private HealthBar healthBar;
 
     private bool isFarting = false;
+
 
     // Stats...
     private static Dictionary<string, int> PlayerStats = new Dictionary<string, int>
@@ -165,6 +168,8 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player took damage, health = " + CurrentHealth);
         CurrentHealth -= damage;
+
+        healthBar.UpdateHealth(CurrentHealth / MaxHealth);
         isTakingDamage = true;
         if (isFarting)
         {
@@ -186,5 +191,10 @@ public class PlayerController : MonoBehaviour
     public void ActivateFart()
     {
         isFarting = true;
+    }
+
+    public void Activatejapanese()
+    {
+        healthBar.gameObject.SetActive(false);
     }
 }

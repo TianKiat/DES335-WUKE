@@ -67,14 +67,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfestedRatEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4129986470981460292, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 748811263594855529, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+--- !u!1 &4729514820755450313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3603484598789369268, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+  m_PrefabInstance: {fileID: 8331864427191895165}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4797683087078399964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3545583963559533473, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
   m_PrefabInstance: {fileID: 8331864427191895165}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6498204735495138053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2994603800092635000, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+  m_PrefabInstance: {fileID: 8331864427191895165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adba1db357a38c94487954f82d661508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8774407822811953171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 748811263594855534, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
@@ -95,6 +115,8 @@ MonoBehaviour:
   BaseHealth: 40
   Damage: 4
   PartyHat: {fileID: 4797683087078399964}
+  healthbar: {fileID: 6498204735495138053}
+  buffIcon: {fileID: 4729514820755450313}
   rotationstep: 3
   moveSpeed: 1
   knockBackForce: 20
