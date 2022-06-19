@@ -166,7 +166,6 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Player took damage, health = " + CurrentHealth);
         CurrentHealth -= damage;
 
         healthBar.UpdateHealth(CurrentHealth / MaxHealth);

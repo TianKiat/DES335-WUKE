@@ -92,7 +92,6 @@ public class BaseWeapon : MonoBehaviour
 
             // spawn bullet with damage
             --CurrentMagazineCapacity;
-            Debug.Log("Fired Bullet, magazine now at: " + CurrentMagazineCapacity + "/" + MagazineCapacity);
             if (CurrentMagazineCapacity <= 0)
                 Reloading_Enter();
             NextFireTime = Time.time + FireInterval;
@@ -113,7 +112,6 @@ public class BaseWeapon : MonoBehaviour
     private void Reloading_Enter()
     {
         CurrentReloadTime = 0.0f;
-        Debug.Log("Started Reload");
         isReloading = true;
     }
 
@@ -122,7 +120,6 @@ public class BaseWeapon : MonoBehaviour
         if (isReloading)
         {
             CurrentReloadTime += Time.deltaTime;
-            Debug.Log("Reloading: " + GetReloadProgress() + "% done.");
             if (CurrentReloadTime > ReloadTime * (1.0f - ReloadTimeModifier - AdditionalReloadSpeedMod))
                 // finish reloading and transition to last state
                 Reloading_Exit();
@@ -131,7 +128,6 @@ public class BaseWeapon : MonoBehaviour
 
     private void Reloading_Exit()
     {
-        Debug.Log("Finished Reload");
         CurrentReloadTime = ReloadTime;
         isReloading = false;
         CurrentMagazineCapacity = MagazineCapacity;

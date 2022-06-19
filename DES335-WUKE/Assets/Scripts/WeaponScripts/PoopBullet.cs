@@ -9,7 +9,7 @@ public class PoopBullet : BaseBullet
 
     private static float DOTTickRate = 0.5f;
 
-    public virtual void OnHitResponse(GameObject other)
+    public override void OnHitResponse(GameObject other)
     {
         // Deal Damage here
         if (IsPlayerBullet)
@@ -34,6 +34,6 @@ public class PoopBullet : BaseBullet
 
             // spawn or play some vfx
         }
-
+        yield return null;
     }
 }

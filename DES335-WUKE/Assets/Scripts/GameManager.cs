@@ -45,14 +45,11 @@ public class GameManager : MonoBehaviour
     public void RegisterEnemy(BaseEnemy enemy)
     {
         activeEnemies.Add(enemy);
-
-        Debug.Log("Registered " + enemy.gameObject.name);
     }
 
     public void DeregisterEnemy(BaseEnemy enemy)
     {
         activeEnemies.Remove(enemy);
-        Debug.Log("Deregistered " + enemy.gameObject.name);
     }
 
     public void SetDreamPotEffect(int index)
