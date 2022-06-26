@@ -28,8 +28,10 @@ public class SpittingWormEnemy : BaseEnemy
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        if (GameManager.Instance.GetPauseState()) return;
+
         Vector3 dir = playerTransform.position - transform.position;
         if (dir.sqrMagnitude <= radiusSqr)
         {

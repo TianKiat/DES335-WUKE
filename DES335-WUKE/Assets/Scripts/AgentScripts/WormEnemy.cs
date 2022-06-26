@@ -24,8 +24,10 @@ public class WormEnemy : BaseEnemy
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        if (GameManager.Instance.GetPauseState()) return;
+
         switch (fsm.State)
         {
             case States.Idle:
