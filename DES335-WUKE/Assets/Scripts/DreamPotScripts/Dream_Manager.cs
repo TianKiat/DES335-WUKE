@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dream_Manager : MonoBehaviour
 {
+    private List<int> ActiveDreams;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,15 @@ public class Dream_Manager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddDreamToActiveDreams()
+    {
+
+    }
+
+    public List<int> CheckActiveDreams()
+    {
+        return ActiveDreams;
     }
 }

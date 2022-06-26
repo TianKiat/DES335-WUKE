@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 5745404671266512404}
   - component: {fileID: 362501026}
   - component: {fileID: 800402117}
+  - component: {fileID: 4601531044311236848}
   m_Layer: 0
   m_Name: Kevin
   m_TagString: Player
@@ -610,6 +611,26 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &4601531044311236848
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745404672243191250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45102367c05227a47b06bac4e517e9aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5745404672708786700
 GameObject:
   m_ObjectHideFlags: 0

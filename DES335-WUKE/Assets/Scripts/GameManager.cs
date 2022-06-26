@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public PlayerController PlayerInstance = null;
 
+
+    [SerializeField] Dreampot Dreampot;
+
+    //this is to track all active dreams in the game
+    private List<int> ActiveDreams = new List<int>();
+
     List<BaseEnemy> activeEnemies = new List<BaseEnemy>();
     private void Awake()
     {
@@ -18,6 +24,12 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+    }
+
+    private void Start()
+    {
+        SetPauseState(true);
+        OpenDreamPot();
     }
 
     // Update is called once per frame
@@ -111,6 +123,27 @@ public class GameManager : MonoBehaviour
                 Debug.Log("This dreampot index is not supported!");
                 break;
         }
+        AddDreamToActiveList(index);
+        CloseDreamPot();
+    }
+    private void AddDreamToActiveList(int index)
+    {
+        ActiveDreams.Add(index);
     }
 
+    private void CloseDreamPot()
+    {
+        Dreampot.CloseDreampot();
+        SetPauseState(false);
+    }
+
+    private void OpenDreamPot()
+    {
+        Dreampot.OpenDreampot();
+    }
+
+    public List<int> GetActiveDreams()
+    {
+        return ActiveDreams;
+    }
 }
