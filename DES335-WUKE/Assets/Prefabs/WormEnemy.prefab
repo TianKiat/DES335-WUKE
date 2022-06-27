@@ -107,9 +107,9 @@ MonoBehaviour:
   PartyHat: {fileID: 1488385711}
   healthbar: {fileID: 1640966383742863392}
   buffIcon: {fileID: 7831193433427483014}
-  IdleSquirmForce: 2
+  IdleSquirmForce: 4
   ChaseSquirmForce: 3
-  SquirmDelay: 1.5
+  SquirmDelay: 0.5
   AttackDelay: 1
   knockBackForce: 10
   SquirmMaxRotation: 10
@@ -123,11 +123,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.7, y: 0.4}
+  m_Size: {x: 1, y: 0.5}
   m_Direction: 1
 --- !u!1 &1640966384401553921
 GameObject:
@@ -153,14 +153,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640966384401553921}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.31, y: 0.31, z: 0.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1640966383870464464}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1640966384401553923
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -202,9 +202,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.6954531, b: 0.5613208, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: -956757641, guid: d0ad91aefa95e9a45bce9eac1604d3ce, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -251,6 +251,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1640966383870464464}
     m_Modifications:
+    - target: {fileID: 1215497571893675493, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1215497572505812869, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -321,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215497572505812869, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.3
+      value: 0.664
       objectReference: {fileID: 0}
     - target: {fileID: 1215497572505812869, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
