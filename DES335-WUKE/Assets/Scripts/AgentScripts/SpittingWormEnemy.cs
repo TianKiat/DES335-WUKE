@@ -35,7 +35,6 @@ public class SpittingWormEnemy : BaseEnemy
         Vector3 dir = playerTransform.position - transform.position;
         if (dir.sqrMagnitude <= radiusSqr)
         {
-            transform.right = dir;
             BaseBullet bullet = weapon.FireWeapon(DamageModifier);
             if (bullet)
                 bullet.IsPlayerBullet = false;

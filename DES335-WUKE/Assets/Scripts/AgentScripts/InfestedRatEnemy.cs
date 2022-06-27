@@ -17,7 +17,7 @@ public class InfestedRatEnemy : GiantRatEnemy
         {
             Vector3 position = transform.position + new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f), 0.0f);
 
-            Instantiate(worm, position, Quaternion.Euler(0, 0, Random.Range(0, 360.0f)));
+            Instantiate(worm, position, Quaternion.identity);
         }
         base.Dying_Enter();
 

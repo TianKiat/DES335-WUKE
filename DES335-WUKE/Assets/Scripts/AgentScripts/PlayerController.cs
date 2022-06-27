@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     private bool isFiring;
     private bool isTakingDamage;
     private float recoveryTime;
+
+    public Transform avatarBody = null;
     // Start is called before the first frame update
     void Awake()
     {
@@ -72,6 +74,12 @@ public class PlayerController : MonoBehaviour
 
         if (WeaponPivot == null)
             Debug.LogException(new System.ArgumentNullException("Assign Weapon Pivot GameObject before continuing!"));
+        if (avatarBody == null)
+            Debug.LogException(new System.ArgumentNullException("Body GameObject not found!"));
+    }
+
+    private void Start()
+    {
     }
 
     void Update()
@@ -91,7 +99,13 @@ public class PlayerController : MonoBehaviour
         if (!isTakingDamage)
         {
             rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
-            transform.localScale = new Vector3(input_vec.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
+
+            if (input_vec.x == -1.0f && avatarBody.localScale.x == 0.5f || input_vec.x == 1.0f && avatarBody.localScale.x == -0.5f)
+            {
+                avatarBody.localScale = new Vector3(-avatarBody.localScale.x,
+                   avatarBody.localScale.y, avatarBody.localScale.z);
+            }
+
         }
         else
         {
@@ -116,11 +130,11 @@ public class PlayerController : MonoBehaviour
     void OnMousePosition(InputValue input)
     {
 
-        Vector2 dir = playerInput.camera.ScreenToWorldPoint(input.Get<Vector2>()) - transform.position;
+        Vector2 dir = (playerInput.camera.ScreenToWorldPoint(input.Get<Vector2>()) - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         WeaponPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        WeaponPivot.localScale = new Vector3(1.0f, dir.x < 0 ? -1.0f : 1.0f, 1.0f);
+        WeaponPivot.localScale = new Vector3(1.0f, dir.x > 0 ? 1.0f : -1.0f, 1.0f);
     }
 
     void OnFire(InputValue input)
