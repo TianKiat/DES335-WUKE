@@ -96,4 +96,9 @@ public class BaseEnemy : MonoBehaviour
         // add buff icon
         buffIcon.SetActive(true);
     }
+
+    public float GetMaxHealth()
+    {
+        return MaxHealth;
+    }
 }

@@ -36,7 +36,8 @@ public class BaseBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        other.GetComponent<Rigidbody2D>().AddForce(
+        if(other.GetComponent<Rigidbody2D>() != null)
+            other.GetComponent<Rigidbody2D>().AddForce(
                             transform.right * Damage, ForceMode2D.Impulse);
     }
 

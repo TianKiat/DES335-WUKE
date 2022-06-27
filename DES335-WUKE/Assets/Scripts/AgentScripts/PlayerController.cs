@@ -164,12 +164,17 @@ public class PlayerController : MonoBehaviour
         weaponSystem.ReloadSpeedModifier = 0.01f * PlayerStats["cog"];
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool isProjectile = true)
     {
         CurrentHealth -= damage;
 
         healthBar.UpdateHealth(CurrentHealth / MaxHealth);
-        isTakingDamage = true;
+
+        if (isProjectile)
+        {
+            isTakingDamage = true;
+        }
+
         if (isFarting)
         {
             // play farting noise and vfx
@@ -195,5 +200,10 @@ public class PlayerController : MonoBehaviour
     public void Activatejapanese()
     {
         healthBar.gameObject.SetActive(false);
+    }
+
+    public float GetMaxHealth()
+    {
+        return MaxHealth;
     }
 }
