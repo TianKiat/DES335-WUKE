@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
         if (!isTakingDamage)
         {
             rb.MovePosition(rb.position + input_vec * CurrentMoveSpeed * Time.fixedDeltaTime);
+            transform.localScale = new Vector3(input_vec.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
         }
         else
         {

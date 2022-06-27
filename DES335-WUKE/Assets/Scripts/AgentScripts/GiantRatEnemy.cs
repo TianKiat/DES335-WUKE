@@ -40,9 +40,9 @@ public class GiantRatEnemy : BaseEnemy
                 break;
             case States.Chase:
                 {
-                    Vector3 target = GameManager.Instance.PlayerInstance.transform.position - transform.position;
-                    transform.right = Vector3.Slerp(transform.right, (target), rotationstep * Time.deltaTime);
-                    rb.velocity = transform.right * moveSpeed;
+                    Vector3 target = (GameManager.Instance.PlayerInstance.transform.position - transform.position).normalized;
+                    rb.velocity = target * moveSpeed;
+                    transform.localScale = new Vector3(target.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
                 }
                 break;
             case States.Attack:

@@ -53,7 +53,7 @@ public class BaseEnemy : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+
     }
 
     public virtual void Dead_Enter()

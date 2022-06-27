@@ -41,8 +41,9 @@ public class WormEnemy : BaseEnemy
                     {
                         nextSquirmTime = Time.time + SquirmDelay;
 
-                        transform.Rotate(0, 0, Random.Range(-SquirmMaxRotation, SquirmMaxRotation));
-                        rb.AddForce(transform.right * IdleSquirmForce, ForceMode2D.Impulse);
+                        Vector2 direction = Random.insideUnitCircle.normalized;
+                        rb.AddForce(direction * IdleSquirmForce, ForceMode2D.Impulse);
+                        transform.localScale = new Vector3(direction.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
                     }
                 }
                 break;
@@ -51,11 +52,10 @@ public class WormEnemy : BaseEnemy
                     if (Time.time >= nextSquirmTime)
                     {
                         nextSquirmTime = SquirmDelay * 0.2f + Time.time;
-                        Vector3 target = GameManager.Instance.PlayerInstance.transform.position - transform.position;
 
-                        transform.right = Vector3.Slerp(transform.right, (target), SquirmMaxRotation * 0.5f);
-
-                        rb.AddForce(transform.right * ChaseSquirmForce, ForceMode2D.Impulse);
+                        Vector3 target = (GameManager.Instance.PlayerInstance.transform.position - transform.position).normalized;
+                        rb.AddForce(target * ChaseSquirmForce, ForceMode2D.Impulse);
+                        transform.localScale = new Vector3(target.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
                     }
                 }
                 break;
