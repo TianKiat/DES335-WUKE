@@ -562,6 +562,7 @@ MonoBehaviour:
   PeeTrail: {fileID: 8591723882894743053}
   PartyHat: {fileID: 3264674944542741717}
   healthBar: {fileID: 1215497572490653476}
+  avatarBody: {fileID: 5745404672708786701}
 --- !u!114 &362501026
 MonoBehaviour:
   m_ObjectHideFlags: 0
