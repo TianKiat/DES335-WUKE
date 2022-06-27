@@ -10,6 +10,13 @@ public class RoomTransition : MonoBehaviour
     
     bool canTransit;
 
+    [SerializeField]
+    bool isLocked;
+
+    SpriteRenderer objectSprite;
+    Sprite lockedSprite;
+    Sprite unlockedSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +31,15 @@ public class RoomTransition : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (!isLocked)
         {
-            if (canTransit)
+            if (collision.tag == "Player")
             {
-                collision.transform.position = otherTransition.transform.position;
-                otherTransition.SetCanTransit(false);       //Prevent constant tp-ing
+                if (canTransit)
+                {
+                    collision.transform.position = otherTransition.transform.position;
+                    otherTransition.SetCanTransit(false);       //Prevent constant tp-ing
+                }
             }
         }
     }
@@ -37,6 +47,20 @@ public class RoomTransition : MonoBehaviour
     public void SetCanTransit(bool toggle)
     {
         canTransit = toggle;
+    }
+
+    public void SetLock(bool toggle)
+    {
+        isLocked = toggle;
+
+        if (isLocked)
+        {
+            objectSprite.sprite = lockedSprite;
+        }
+        else
+        {
+            objectSprite.sprite = unlockedSprite;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
