@@ -157,9 +157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealth: 100
   Damage: 2
+  coinDropAmount: 12
   PartyHat: {fileID: 1488385711}
   healthbar: {fileID: 1640966383742863392}
   buffIcon: {fileID: 7831193433427483014}
+  dreamCoinDropObj: {fileID: 8271138304905800653, guid: 34228579b9d868c41b744aa66beb0093, type: 3}
+  healthOrbDropObj: {fileID: 2617497626883302719, guid: 2be466e7a92e33b44a9645d0ca2c9020, type: 3}
+  enemyTier: 0
   IdleSquirmForce: 4
   ChaseSquirmForce: 3
   SquirmDelay: 0.5

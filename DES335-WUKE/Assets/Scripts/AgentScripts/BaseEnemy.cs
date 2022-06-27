@@ -10,6 +10,8 @@ public class BaseEnemy : MonoBehaviour
     protected float BaseHealth = 100.0f;
     [SerializeField]
     protected float Damage = 2.0f;
+    [SerializeField]
+    protected float coinDropAmount;
 
     protected float CurrentHealth;
     protected float MaxHealth;
@@ -23,6 +25,11 @@ public class BaseEnemy : MonoBehaviour
     private HealthBar healthbar;
     [SerializeField]
     private GameObject buffIcon;
+    [SerializeField]
+    private GameObject dreamCoinDropObj;
+    [SerializeField]
+    private GameObject healthOrbDropObj;
+
     protected enum States
     {
         Idle,
@@ -34,6 +41,22 @@ public class BaseEnemy : MonoBehaviour
     }
 
     protected StateMachine<States, StateDriverUnity> fsm;
+
+    protected enum Tier
+    {
+        Grunt,
+        Elite,
+        MiniBoss,
+        Boss,
+        Secret
+    }
+
+    float[] healPercentages = new float[5] { 0.05f, 0.1f, 0.3f, 1.0f, 1.0f };
+    float[] healthOrbDropChance = new float[5] { 0.2f, 0.2f, 0.3f, 1.0f, 1.0f };
+    float[] healthOrbScaleSize = new float[5] { 1.0f, 1.2f, 1.4f, 2.0f, 2.0f };
+
+    [SerializeField]
+    protected Tier enemyTier;
 
     // Start is called before the first frame update
     void Awake()
@@ -60,6 +83,11 @@ public class BaseEnemy : MonoBehaviour
     {
         //de register from enemy manager pool
         GameManager.Instance.DeregisterEnemy(this);
+
+        SpawnCoin();
+
+        SpawnHealthOrb();
+
         Destroy(gameObject);
     }
 
@@ -100,5 +128,26 @@ public class BaseEnemy : MonoBehaviour
     public float GetMaxHealth()
     {
         return MaxHealth;
+    }
+
+    void SpawnCoin()
+    {
+        //Drops a coin
+        GameObject go = Instantiate(dreamCoinDropObj, transform.position, transform.rotation);
+        go.GetComponent<DreamCoin>().SetAmount(coinDropAmount);
+    }
+
+    void SpawnHealthOrb()
+    {
+        float spawnChance = Random.Range(0.0f, 1.0f);
+
+        //Drop different health orbs based on tier
+        if (spawnChance < healthOrbDropChance[(int)enemyTier])
+        {
+            GameObject go = Instantiate(healthOrbDropObj, transform.position, transform.rotation);
+            go.GetComponent<HealthOrb>().SetAmount(healPercentages[(int)enemyTier]);
+            go.transform.localScale = new Vector3(healthOrbScaleSize[(int)enemyTier], healthOrbScaleSize[(int)enemyTier], 1.0f);
+            Debug.Log("Dropping a tier " + (int)enemyTier);
+        }
     }
 }

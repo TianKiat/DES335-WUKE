@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     private List<int> ActiveDreams = new List<int>();
 
     List<BaseEnemy> activeEnemies = new List<BaseEnemy>();
+
+    private int levelsCleared;
+    public const float levelClearBonus = 0.01f;
+
     private void Awake()
     {
 
@@ -145,5 +149,10 @@ public class GameManager : MonoBehaviour
     public List<int> GetActiveDreams()
     {
         return ActiveDreams;
+    }
+
+    public int GetLevelsCleared()
+    {
+        return levelsCleared;
     }
 }

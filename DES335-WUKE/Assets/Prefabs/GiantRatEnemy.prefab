@@ -152,9 +152,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealth: 25
   Damage: 4
+  coinDropAmount: 30
   PartyHat: {fileID: 3545583963559533473}
   healthbar: {fileID: 2994603800092635000}
   buffIcon: {fileID: 3603484598789369268}
+  dreamCoinDropObj: {fileID: 8271138304905800653, guid: 34228579b9d868c41b744aa66beb0093, type: 3}
+  healthOrbDropObj: {fileID: 2617497626883302719, guid: 2be466e7a92e33b44a9645d0ca2c9020, type: 3}
+  enemyTier: 2
   rotationstep: 5
   moveSpeed: 4
   knockBackForce: 15

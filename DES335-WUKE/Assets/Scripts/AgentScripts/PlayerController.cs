@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour
     private float recoveryTime;
 
     public Transform avatarBody = null;
+
+    private float holdingCoins;
+    const float optCoinMultiplier = 0.03f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -65,6 +68,7 @@ public class PlayerController : MonoBehaviour
         // Initialize runtime variables
         CurrentHealth = MaxHealth;
         rb = gameObject.GetComponent<Rigidbody2D>();
+        holdingCoins = 0;
 
         input_vec = Vector2.zero;
 
@@ -220,5 +224,21 @@ public class PlayerController : MonoBehaviour
     public float GetMaxHealth()
     {
         return MaxHealth;
+    }
+
+    public void AddCoins(float amount)
+    {
+        //Multiplier based on opt stat and level cleared
+        float multiplier = (1.0f + (PlayerStats["opt"] * optCoinMultiplier)) + (GameManager.Instance.GetLevelsCleared() * GameManager.levelClearBonus);
+        holdingCoins += (amount * multiplier);
+
+        //Update UI after this part
+        
+    }
+
+    public void AddHealth(float healPercentage)
+    {
+        Debug.Log("Healing for " + (healPercentage * MaxHealth));
+        CurrentHealth += (healPercentage * MaxHealth);
     }
 }
