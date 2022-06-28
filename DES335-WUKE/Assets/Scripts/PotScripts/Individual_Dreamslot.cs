@@ -90,4 +90,12 @@ public class Individual_Dreamslot : MonoBehaviour
         //activates the selected dream
         m_DreamObj[temp].SetActive(true);
     }
+
+    public void DisableDream()
+    {
+        for (int i = 0; i < m_DreamObj.Count; ++i)
+        {
+            m_DreamObj[i].SetActive(false);
+        }
+    }
 }

@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviour
     // Stats...
     private static Dictionary<string, int> PlayerStats = new Dictionary<string, int>
     {
-        { "stb", 0 },
-        { "lcd", 0 },
-        { "cog", 0 },
-        { "opt", 0 }
+        { "stb", 5 },
+        { "lcd", 5 },
+        { "cog", 5 },
+        { "opt", 5 }
     };
 
     // Runtime variables
@@ -170,6 +170,12 @@ public class PlayerController : MonoBehaviour
     public void SetStat(string statName, int newValue)
     {
         PlayerStats[statName] = newValue;
+        ResolveStats();
+    }
+
+    public void ModifyCurrentStat(string statName, int modValue)
+    {
+        PlayerStats[statName] += modValue;
         ResolveStats();
     }
 

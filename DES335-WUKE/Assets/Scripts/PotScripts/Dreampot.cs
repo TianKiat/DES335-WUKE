@@ -24,6 +24,11 @@ public class Dreampot : MonoBehaviour
     public void CloseDreampot()
     {
         m_Anim.Play("CloseDreampot");
+
+        for (int i = 0; i < m_IndividualSlots.Count; ++i)
+        {
+            m_IndividualSlots[i].DisableDream();
+        }
     }
 
     public void OpenDreampot()
