@@ -42,7 +42,7 @@ public class Levelpot : MonoBehaviour
         //update possible candies. if a stat is 1 that bane candy should not appear
         UpdatePossibleSelections();
 
-        RollSlots();
+        m_Anim.Play("RollLevelpot");
     }
 
     public void ResetLevelpot()
