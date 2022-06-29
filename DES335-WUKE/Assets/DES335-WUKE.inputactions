@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CycleTrinketLeft",
+                    "type": "Button",
+                    "id": "36e6dfe6-3e03-4cfd-b939-0ce275810ca8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CycleTrinketRight",
+                    "type": "Button",
+                    "id": "5c9e5cf8-26cf-42ac-a550-9da5429e64d1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -353,6 +371,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5071491c-3c11-4a1c-b4fb-db543f78f483",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "CycleTrinketLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a585109-e338-4631-ad53-e575b3aaf2b0",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CycleTrinketRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

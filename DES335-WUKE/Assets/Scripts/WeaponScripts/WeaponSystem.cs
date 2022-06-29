@@ -117,10 +117,7 @@ public class WeaponSystem : MonoBehaviour
     {
         weapon.isOnGround = false;
         WeaponLoadOut[currentWeaponLoadOut[1]] = weapon;
-        weapon.gameObject.transform.parent = GetComponent<PlayerController>().GetWeaponPivot();
-        weapon.gameObject.transform.localPosition = Vector3.zero;
-        weapon.gameObject.transform.localRotation = Quaternion.identity;
-        weapon.gameObject.transform.localScale = new Vector3(-0.5f, 0.5f, 1.0f);
+        ResetTransform(weapon);
         weapon.gameObject.SetActive(false);
         SwitchWeapon();
     }
@@ -137,6 +134,11 @@ public class WeaponSystem : MonoBehaviour
         weapon.isOnGround = false;
         weapon.GetComponent<BoxCollider2D>().enabled = false;
         WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]] = weapon;
+        ResetTransform(weapon);
+    }
+
+    void ResetTransform(BaseWeapon weapon)
+    {
         weapon.gameObject.transform.parent = GetComponent<PlayerController>().GetWeaponPivot();
         weapon.gameObject.transform.localPosition = Vector3.zero;
         weapon.gameObject.transform.localRotation = Quaternion.identity;

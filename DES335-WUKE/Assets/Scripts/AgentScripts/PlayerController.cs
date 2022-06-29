@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Transform WeaponPivot;
+    [SerializeField]
+    private Transform TrinketPoint;
 
     [SerializeField]
     private GameObject PeeTrail;
@@ -30,12 +32,20 @@ public class PlayerController : MonoBehaviour
 
 
     // Stats...
-    private static Dictionary<string, int> PlayerStats = new Dictionary<string, int>
+    private static Dictionary<string, int> BaseStats = new Dictionary<string, int>
     {
         { "stb", 5 },
         { "lcd", 5 },
         { "cog", 5 },
         { "opt", 5 }
+    };
+
+    private static Dictionary<string, int> AddStats = new Dictionary<string, int>
+    {
+        { "stb", 0 },
+        { "lcd", 0 },
+        { "cog", 0 },
+        { "opt", 0 }
     };
 
     // Runtime variables
@@ -45,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private WeaponSystem weaponSystem;
     private PlayerInput playerInput;
+    private TrinketInventory trinketInventory;
 
     private Vector2 input_vec;
     private bool isFiring;
@@ -59,11 +70,13 @@ public class PlayerController : MonoBehaviour
     const float optCoinMultiplier = 0.03f;
 
     private GameObject collidedDrop;
+
     // Start is called before the first frame update
     void Awake()
     {
         // get components
         weaponSystem = GetComponent<WeaponSystem>();
+        trinketInventory = GetComponent<TrinketInventory>();
         playerInput = GetComponent<PlayerInput>();
 
         // diable dreampot props
@@ -126,8 +139,6 @@ public class PlayerController : MonoBehaviour
 
         if (isFiring)
             weaponSystem.FireWeapon();
-
-        Debug.Log(isInteractDrop);
     }
 
     void OnMove(InputValue input)
@@ -160,6 +171,16 @@ public class PlayerController : MonoBehaviour
         weaponSystem.SwitchWeapon();
     }
 
+    void OnCycleTrinketLeft()
+    {
+        trinketInventory.CycleTrinketLeft();
+    }
+
+    void OnCycleTrinketRight()
+    {
+        trinketInventory.CycleTrinketRight();
+    }
+
     /*
      * Stability    ->  stb
      * Lucidity     ->  lcd
@@ -168,18 +189,24 @@ public class PlayerController : MonoBehaviour
      */
     public int GetStat(string statName)
     {
-        return PlayerStats[statName];
+        return BaseStats[statName];
     }
 
     public void SetStat(string statName, int newValue)
     {
-        PlayerStats[statName] = newValue;
+        BaseStats[statName] = newValue;
+        ResolveStats();
+    }
+
+    public void SetAddStat(string statName, int newValue)
+    {
+        AddStats[statName] = newValue;
         ResolveStats();
     }
 
     public void ModifyCurrentStat(string statName, int modValue)
     {
-        PlayerStats[statName] += modValue;
+        BaseStats[statName] += modValue;
         ResolveStats();
     }
 
@@ -187,10 +214,10 @@ public class PlayerController : MonoBehaviour
     // the stats are translated to gameplay values
     private void ResolveStats()
     {
-        MaxHealth = BaseHealth + (PlayerStats["stb"] * 5);
-        weaponSystem.WeaponsDamageModifier = 0.05f * PlayerStats["lcd"];
-        CurrentMoveSpeed = BaseMoveSpeed + (PlayerStats["cog"] * 0.005f * BaseMoveSpeed);
-        weaponSystem.ReloadSpeedModifier = 0.01f * PlayerStats["cog"];
+        MaxHealth = BaseHealth + ((BaseStats["stb"] + AddStats["stb"]) * 5);
+        weaponSystem.WeaponsDamageModifier = 0.05f * (BaseStats["lcd"] + AddStats["lcd"]);
+        CurrentMoveSpeed = BaseMoveSpeed + ((BaseStats["cog"] + AddStats["cog"]) * 0.005f * BaseMoveSpeed);
+        weaponSystem.ReloadSpeedModifier = 0.01f * (BaseStats["cog"] + AddStats["cog"]);
     }
 
     public void TakeDamage(float damage, bool isProjectile = true)
@@ -239,7 +266,7 @@ public class PlayerController : MonoBehaviour
     public void AddCoins(float amount)
     {
         //Multiplier based on opt stat and level cleared
-        float multiplier = (1.0f + (PlayerStats["opt"] * optCoinMultiplier)) + (GameManager.Instance.GetLevelsCleared() * GameManager.levelClearBonus);
+        float multiplier = (1.0f + (BaseStats["opt"] * optCoinMultiplier)) + (GameManager.Instance.GetLevelsCleared() * GameManager.levelClearBonus);
         holdingCoins += (amount * multiplier);
 
         //Update UI after this part
@@ -268,6 +295,14 @@ public class PlayerController : MonoBehaviour
                 }
             }
             //Pick trinket
+            else if (collidedDrop.GetComponent<Trinket>() != null)
+            {
+                if (collidedDrop.GetComponent<Trinket>().isOnGround)
+                {
+                    trinketInventory.AddTrinketToInventory(collidedDrop.GetComponent<Trinket>(), ref holdingCoins);
+                    isInteractDrop = false;
+                }
+            }
         }
     }
 
@@ -278,7 +313,12 @@ public class PlayerController : MonoBehaviour
             isInteract = true;
         }
         //add additional tags and inputs here
-        else if (collision.tag == "Weapon" || collision.tag == "Trinket")
+        if (collision.tag == "Weapon")
+        {
+            collidedDrop = collision.gameObject;
+            isInteractDrop = true;
+        }
+        if (collision.tag == "Trinket")
         {
             collidedDrop = collision.gameObject;
             isInteractDrop = true;
@@ -292,7 +332,11 @@ public class PlayerController : MonoBehaviour
             collidedDrop = null;
             isInteractDrop = false; 
         }
-
+        if (collision.gameObject == collidedDrop)
+        {
+            collidedDrop = null;
+            isInteractDrop = false;
+        }
         if (collision.tag == "Levelpot")
         {
             isInteract = false;
@@ -306,7 +350,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach (var stat in PlayerStats)
+        foreach (var stat in BaseStats)
         {
             GameManager.Instance.SetStat(stat.Key, stat.Value);
         }
@@ -315,5 +359,10 @@ public class PlayerController : MonoBehaviour
     public Transform GetWeaponPivot()
     {
         return WeaponPivot.transform;
+    }
+
+    public Transform GetTrinketTransform()
+    {
+        return TrinketPoint.transform;
     }
 }
