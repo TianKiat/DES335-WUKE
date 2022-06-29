@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         AddDreamToActiveList(index);
         CloseDreamPot();
     }
-    private void AddDreamToActiveList(int index)
+    public void AddDreamToActiveList(int index)
     {
         ActiveDreams.Add(index);
     }
