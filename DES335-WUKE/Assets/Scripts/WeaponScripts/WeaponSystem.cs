@@ -31,14 +31,21 @@ public class WeaponSystem : MonoBehaviour
 
     public void SwitchWeapon()
     {
-        currentWeaponIndex = currentWeaponIndex == 0 ? 1 : 0;
+        //// disable all weapons
+        //foreach (BaseWeapon weapon in WeaponLoadOut)
+        //    weapon.gameObject.SetActive(false);
 
-        // disable all weapons
-        foreach (BaseWeapon weapon in WeaponLoadOut)
-            weapon.gameObject.SetActive(false);
+        //// enable current weapon
+        //WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].gameObject.SetActive(true);
 
-        // enable current weapon
-        WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].gameObject.SetActive(true);
+        //Check if 2nd slot is empty
+        if (WeaponLoadOut[currentWeaponLoadOut[1]] != null)
+        {
+            //Disable current weapon and enable next weapon
+            WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].gameObject.SetActive(false);
+            currentWeaponIndex = currentWeaponIndex == 0 ? 1 : 0;
+            WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].gameObject.SetActive(true);
+        }
     }
 
     // provide a weapon_id and the currently equipped weapon will be swapped to that weapon_id
@@ -73,5 +80,64 @@ public class WeaponSystem : MonoBehaviour
 
         reloadText.gameObject.SetActive(IsReloading());
 
+    }
+
+    public void PickUp(BaseWeapon weapon, ref float playerCurrency)
+    {
+        //Check if weapon has a price and if holding enough currency
+        if (weapon.GetIsShopWeapon() && playerCurrency > weapon.GetCoinCost())
+        {
+            //Check if 2nd slot is empty, if empty add to it
+            if (WeaponLoadOut[currentWeaponLoadOut[1]] == null)
+            {
+                AddWeaponToInventory(weapon);
+            }
+            //Else replace with current slot item
+            else
+            {
+                SwapWeaponFromGround(weapon);
+            }
+        }
+        //Enemy drop
+        else
+        {
+            //Check if 2nd slot is empty, if empty add to it
+            if (WeaponLoadOut[currentWeaponLoadOut[1]] == null)
+            {
+                AddWeaponToInventory(weapon);
+            }
+            else
+            {
+                SwapWeaponFromGround(weapon);
+            }
+        }
+    }
+
+    void AddWeaponToInventory(BaseWeapon weapon)
+    {
+        weapon.isOnGround = false;
+        WeaponLoadOut[currentWeaponLoadOut[1]] = weapon;
+        weapon.gameObject.transform.parent = GetComponent<PlayerController>().GetWeaponPivot();
+        weapon.gameObject.transform.localPosition = Vector3.zero;
+        weapon.gameObject.transform.localRotation = Quaternion.identity;
+        weapon.gameObject.SetActive(false);
+        SwitchWeapon();
+    }
+
+    void SwapWeaponFromGround(BaseWeapon weapon)
+    {
+        //Detach from hand and drop on ground
+        WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].gameObject.transform.parent = null;
+        WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].isOnGround = true;
+        WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].GetComponent<BoxCollider2D>().enabled = true;
+        WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].transform.localRotation = Quaternion.identity;
+        
+        //Assign new item to hand
+        weapon.isOnGround = false;
+        weapon.GetComponent<BoxCollider2D>().enabled = false;
+        WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]] = weapon;
+        weapon.gameObject.transform.parent = GetComponent<PlayerController>().GetWeaponPivot();
+        weapon.gameObject.transform.localPosition = Vector3.zero;
+        weapon.gameObject.transform.localRotation = Quaternion.identity;
     }
 }

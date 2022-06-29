@@ -51,11 +51,14 @@ public class PlayerController : MonoBehaviour
     private bool isTakingDamage;
     private float recoveryTime;
     private bool isInteract;
+    private bool isInteractDrop;
 
     public Transform avatarBody = null;
 
     private float holdingCoins;
     const float optCoinMultiplier = 0.03f;
+
+    private GameObject collidedDrop;
     // Start is called before the first frame update
     void Awake()
     {
@@ -124,6 +127,7 @@ public class PlayerController : MonoBehaviour
         if (isFiring)
             weaponSystem.FireWeapon();
 
+        Debug.Log(isInteractDrop);
     }
 
     void OnMove(InputValue input)
@@ -252,16 +256,42 @@ public class PlayerController : MonoBehaviour
     {
         if (isInteract)
             GameManager.Instance.OpenLevelPot();
+        if (isInteractDrop)
+        {
+            //Pick weapon
+            if (collidedDrop.GetComponent<BaseWeapon>() != null)
+            {
+                if (collidedDrop.GetComponent<BaseWeapon>().isOnGround)
+                {
+                    weaponSystem.PickUp(collidedDrop.GetComponent<BaseWeapon>(), ref holdingCoins);
+                    isInteractDrop = false;
+                }
+            }
+            //Pick trinket
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-
         if (collision.tag == "Levelpot")
         {
             isInteract = true;
         }
         //add additional tags and inputs here
+        else if (collision.tag == "Weapon" || collision.tag == "Trinket")
+        {
+            collidedDrop = collision.gameObject;
+            isInteractDrop = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject == collidedDrop)
+        {
+            collidedDrop = null;
+            isInteractDrop = false; 
+        }
     }
 
     public void SetCurrentHealth(float health)
@@ -276,5 +306,9 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SetStat(stat.Key, stat.Value);
         }
         GameManager.Instance.SetCurrentHealth(CurrentHealth);
+    }
+    public Transform GetWeaponPivot()
+    {
+        return WeaponPivot.transform;
     }
 }

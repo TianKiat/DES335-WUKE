@@ -29,6 +29,18 @@ public class BaseWeapon : MonoBehaviour
         Moving,
     }
 
+    public enum Type
+    {
+        Default_pistol,
+        Poopy_pistol,
+        Ghost_pistol
+    }
+
+    [SerializeField]
+    private float coinCost;
+    private bool isShopWeapon;
+    public bool isOnGround;
+
     private StateMachine<States, StateDriverUnity> fsm;
 
     private float CurrentBulletSpread = 1.0f;
@@ -149,5 +161,15 @@ public class BaseWeapon : MonoBehaviour
             fsm.ChangeState(States.Moving);
         else
             fsm.ChangeState(States.Static);
+    }
+
+    public float GetCoinCost()
+    {
+        return coinCost;
+    }
+
+    public bool GetIsShopWeapon()
+    {
+        return isShopWeapon;
     }
 }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Levelpot
+  - Weapon
+  - Trinket
   layers:
   - Default
   - TransparentFX
