@@ -349,7 +349,7 @@
                     "name": "",
                     "id": "bf1c1664-8135-4245-a960-4eab499361da",
                     "path": "<Keyboard>/e",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",

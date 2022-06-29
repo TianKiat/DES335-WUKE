@@ -63,16 +63,6 @@ public class PlayerController : MonoBehaviour
         weaponSystem = GetComponent<WeaponSystem>();
         playerInput = GetComponent<PlayerInput>();
 
-        // Resolve all stats first
-        ResolveStats();
-
-        // Initialize runtime variables
-        CurrentHealth = MaxHealth;
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        holdingCoins = 0;
-
-        input_vec = Vector2.zero;
-
         // diable dreampot props
         PeeTrail.SetActive(false);
         PartyHat.SetActive(false);
@@ -81,10 +71,20 @@ public class PlayerController : MonoBehaviour
             Debug.LogException(new System.ArgumentNullException("Assign Weapon Pivot GameObject before continuing!"));
         if (avatarBody == null)
             Debug.LogException(new System.ArgumentNullException("Body GameObject not found!"));
+
+        // Resolve all stats first
+        ResolveStats();
+
+        // Initialize runtime variables
+        CurrentHealth = MaxHealth;
     }
 
     private void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        holdingCoins = 0;
+
+        input_vec = Vector2.zero;
     }
 
     void Update()
@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
         holdingCoins += (amount * multiplier);
 
         //Update UI after this part
-        
+
     }
 
     public void AddHealth(float healPercentage)
@@ -248,20 +248,33 @@ public class PlayerController : MonoBehaviour
         CurrentHealth += (healPercentage * MaxHealth);
     }
 
-    private void OnInteract(InputValue value)
+    private void OnInteract()
     {
-        isInteract = value.isPressed;
+        if (isInteract)
+            GameManager.Instance.OpenLevelPot();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isInteract == true)
+
+        if (collision.tag == "Levelpot")
         {
-            if (collision.tag == "Levelpot")
-            {
-                GameManager.Instance.OpenLevelPot();
-            }
-            //add additional tags and inputs here
+            isInteract = true;
         }
+        //add additional tags and inputs here
+    }
+
+    public void SetCurrentHealth(float health)
+    {
+        CurrentHealth = health;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var stat in PlayerStats)
+        {
+            GameManager.Instance.SetStat(stat.Key, stat.Value);
+        }
+        GameManager.Instance.SetCurrentHealth(CurrentHealth);
     }
 }

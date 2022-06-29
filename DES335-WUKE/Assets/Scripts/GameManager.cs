@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,17 +23,29 @@ public class GameManager : MonoBehaviour
     private int levelsCleared;
     public const float levelClearBonus = 0.01f;
 
+    private static Dictionary<string, int> PlayerStats = new Dictionary<string, int>
+    {
+        { "stb", 5 },
+        { "lcd", 5 },
+        { "cog", 5 },
+        { "opt", 5 }
+    };
+
+    private static float PlayerCurrentHealth = 100.0f;
+
     private void Awake()
     {
-
         if (Instance != null && Instance != this)
             Destroy(this);
         else
             Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
+        PlayerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         SetPauseState(true);
         OpenDreamPot();
     }
@@ -165,5 +178,34 @@ public class GameManager : MonoBehaviour
     public int GetLevelsCleared()
     {
         return levelsCleared;
+    }
+
+
+    public void SetCurrentHealth(float health)
+    {
+        PlayerCurrentHealth = health;
+    }
+
+    public void SetStat(string statName, int newValue)
+    {
+        PlayerStats[statName] = newValue;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelLoaded;
+    }
+    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+    {
+        foreach (var stat in PlayerStats)
+        {
+            PlayerInstance.SetStat(stat.Key, stat.Value);
+        }
+        PlayerInstance.SetCurrentHealth(PlayerCurrentHealth);
     }
 }
