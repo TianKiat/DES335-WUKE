@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private bool isFiring;
     private bool isTakingDamage;
     private float recoveryTime;
+    private bool isInteract;
 
     public Transform avatarBody = null;
 
@@ -88,7 +89,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         weaponSystem.GetCurrentWeapon().IsPersonMoving(input_vec.sqrMagnitude >= 0.001f);
 
 
@@ -246,5 +246,22 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Healing for " + (healPercentage * MaxHealth));
         CurrentHealth += (healPercentage * MaxHealth);
+    }
+
+    private void OnInteract(InputValue value)
+    {
+        isInteract = value.isPressed;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isInteract == true)
+        {
+            if (collision.tag == "Levelpot")
+            {
+                GameManager.Instance.OpenLevelPot();
+            }
+            //add additional tags and inputs here
+        }
     }
 }

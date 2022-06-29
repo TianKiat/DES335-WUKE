@@ -15,6 +15,10 @@ public class Levelpot : MonoBehaviour
     [SerializeField] List<int> m_OpptimismIndexes;
     public List<int> m_PossibleSelection = new List<int>();
 
+    [SerializeField] GameObject m_Ballbutton;
+    [SerializeField] GameObject m_Closebutton;
+    [SerializeField] GameObject m_CostUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +47,10 @@ public class Levelpot : MonoBehaviour
         UpdatePossibleSelections();
 
         m_Anim.Play("RollLevelpot");
+
+        m_Ballbutton.SetActive(false);
+        m_Closebutton.SetActive(false);
+        m_CostUI.SetActive(false);
     }
 
     public void ResetLevelpot()
@@ -51,6 +59,10 @@ public class Levelpot : MonoBehaviour
         {
             m_IndividualSlots[i].Resetslot();
         }
+
+        m_Ballbutton.SetActive(true);
+        m_Closebutton.SetActive(true);
+        m_CostUI.SetActive(true);
     }
 
     private void RollSlots()

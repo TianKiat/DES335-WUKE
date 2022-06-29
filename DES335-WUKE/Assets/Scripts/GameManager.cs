@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] Dreampot Dreampot;
+    [SerializeField] Levelpot Levelpot;
 
     //this is to track all active dreams in the game
     private List<int> ActiveDreams = new List<int>();
@@ -145,7 +146,17 @@ public class GameManager : MonoBehaviour
     {
         Dreampot.OpenDreampot();
     }
+    public void CloseLevelPot()
+    {
+        Levelpot.CloseLevelpot();
+        SetPauseState(false);
+    }
 
+    public void OpenLevelPot()
+    {
+        Levelpot.OpenLevelpot();
+        SetPauseState(true);
+    }
     public List<int> GetActiveDreams()
     {
         return ActiveDreams;
