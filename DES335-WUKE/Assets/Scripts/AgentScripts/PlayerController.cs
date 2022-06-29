@@ -292,6 +292,11 @@ public class PlayerController : MonoBehaviour
             collidedDrop = null;
             isInteractDrop = false; 
         }
+
+        if (collision.tag == "Levelpot")
+        {
+            isInteract = false;
+        }
     }
 
     public void SetCurrentHealth(float health)
