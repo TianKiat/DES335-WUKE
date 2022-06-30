@@ -45,6 +45,9 @@ public class WeaponSystem : MonoBehaviour
             WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].gameObject.SetActive(false);
             currentWeaponIndex = currentWeaponIndex == 0 ? 1 : 0;
             WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].gameObject.SetActive(true);
+
+            //toggle alpha
+            GameManager.Instance.HUD_Manager.ToggleWeaponHUD();
         }
     }
 
@@ -69,6 +72,20 @@ public class WeaponSystem : MonoBehaviour
             return WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]];
 
         return null;
+    }
+
+    public Vector2 CheckWeaponLoadout()
+    {
+        Debug.Log(WeaponLoadOut);
+        Vector2 temp = new Vector2(69, 69);
+        temp.x = WeaponLoadOut[0].WeaponIndex;
+        
+        if (WeaponLoadOut[1] != null)
+        {
+            temp.y = WeaponLoadOut[1].WeaponIndex;
+        }
+
+        return temp;
     }
 
     private void Update()
@@ -120,6 +137,8 @@ public class WeaponSystem : MonoBehaviour
         ResetTransform(weapon);
         weapon.gameObject.SetActive(false);
         SwitchWeapon();
+        GameManager.Instance.UpdateHUD();
+        GameManager.Instance.HUD_Manager.ToggleWeaponHUD();
     }
 
     void SwapWeaponFromGround(BaseWeapon weapon)
@@ -135,6 +154,7 @@ public class WeaponSystem : MonoBehaviour
         weapon.GetComponent<BoxCollider2D>().enabled = false;
         WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]] = weapon;
         ResetTransform(weapon);
+        GameManager.Instance.UpdateHUD();
     }
 
     void ResetTransform(BaseWeapon weapon)

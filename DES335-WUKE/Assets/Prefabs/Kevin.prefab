@@ -327,6 +327,7 @@ MonoBehaviour:
   BaseMoveSpeed: 4
   ReloadMoveSpeedModifier: 0.85
   DamageRecoveryTime: 0.55
+  WeaponSystem: {fileID: 362501026}
   WeaponPivot: {fileID: 5745404671363405569}
   TrinketPoint: {fileID: 0}
   PeeTrail: {fileID: 8591723882894743053}

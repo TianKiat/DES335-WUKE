@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float ReloadMoveSpeedModifier = 0.85f;
     [SerializeField]
     private float DamageRecoveryTime = 0.85f;
+    [SerializeField]
+    public WeaponSystem WeaponSystem;
 
     [SerializeField]
     private Transform WeaponPivot;

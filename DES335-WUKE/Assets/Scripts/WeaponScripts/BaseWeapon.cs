@@ -6,6 +6,8 @@ using MonsterLove.StateMachine;
 public class BaseWeapon : MonoBehaviour
 {
     [SerializeField]
+    public int WeaponIndex;
+    [SerializeField]
     private float FireInterval = 0.1f;
     [SerializeField]
     private float DefaultBulletSpread = 1.1f;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 122568198349149343}
   - component: {fileID: 122568198349149329}
   - component: {fileID: 122568198349149328}
+  - component: {fileID: 5011560422365041668}
   m_Layer: 5
   m_Name: Weapon
   m_TagString: Untagged
@@ -139,6 +140,28 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5011560422365041668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122568198349149342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee130b5a1069de54693ab52775fe3f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WeaponAlpha_1: {fileID: 122568198358608183}
+  m_WeaponAlpha_2: {fileID: 122568199965901546}
+  m_Slot_1_Obj:
+  - {fileID: 122568200212627487}
+  - {fileID: 122568200124588690}
+  - {fileID: 122568199102350654}
+  m_Slot_2_Obj:
+  - {fileID: 122568200221752729}
+  - {fileID: 122568199145416742}
+  - {fileID: 122568200300396043}
 --- !u!1 &122568198358608183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,6 +2203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Stat_HUD: {fileID: 122568199416063760}
+  m_Weapon_HUD: {fileID: 5011560422365041668}
   m_Coin_HUD: {fileID: 122568199192120389}
   m_Trinket_HUD: {fileID: 0}
 --- !u!1 &122568199866306577

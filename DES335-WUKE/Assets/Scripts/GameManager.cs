@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Dreampot Dreampot;
     [SerializeField] Levelpot Levelpot;
-    [SerializeField] HUD_Manager HUD_Manager;
+    [SerializeField] public HUD_Manager HUD_Manager;
 
     //level cost variables
     private float LevelCost = 100;
@@ -240,5 +240,10 @@ public class GameManager : MonoBehaviour
     {
         LevelCost = LevelCost * 1.03f;
         LevelCost = Mathf.RoundToInt(LevelCost);
+    }
+
+    public Vector2 CheckWeapons()
+    {
+        return PlayerInstance.WeaponSystem.CheckWeaponLoadout();
     }
 }
