@@ -42,6 +42,7 @@ public class LevelTransition : MonoBehaviour
             {
                 if (canTransit)
                 {
+                    GameManager.Instance.ClearEnemyList();
                     SceneManager.LoadScene(levelToLoad);
                 }
             }

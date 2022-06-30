@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
                     PlayerInstance.ActivateHat();
                     foreach (BaseEnemy enemy in activeEnemies)
                     {
-                        enemy.ActivateHat();
+                            enemy.ActivateHat();
                     }
                 }
                 break;
@@ -218,6 +218,11 @@ public class GameManager : MonoBehaviour
         PlayerInstance.SetCurrentHealth(PlayerCurrentHealth);
         PlayerInstance.transform.position = spawnPoint.transform.position;
         OpenDreamPot();
+    }
+
+    public void ClearEnemyList()
+    {
+        activeEnemies.Clear();
     }
 
     public void UpdateHUD()
