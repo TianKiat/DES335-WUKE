@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(WeaponSystem))]
@@ -362,7 +363,17 @@ public class PlayerController : MonoBehaviour
         CurrentHealth = health;
     }
 
-    private void OnDestroy()
+    private void OnEnable()
+    {
+        SceneManager.sceneUnloaded += OnLevelLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneUnloaded -= OnLevelLoaded;
+    }
+
+    private void OnLevelLoaded(Scene scene)
     {
         foreach (var stat in BaseStats)
         {

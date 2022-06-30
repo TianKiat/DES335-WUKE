@@ -21,7 +21,7 @@ public class RoomTransition : MonoBehaviour
     Sprite unlockedSprite;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         objectSprite = GetComponent<SpriteRenderer>();
         canTransit = true;

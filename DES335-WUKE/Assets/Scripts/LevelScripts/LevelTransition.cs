@@ -21,7 +21,7 @@ public class LevelTransition : MonoBehaviour
     Sprite unlockedSprite;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         canTransit = true;
         objectSprite = GetComponent<SpriteRenderer>();

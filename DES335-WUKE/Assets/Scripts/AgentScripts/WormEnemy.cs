@@ -26,7 +26,11 @@ public class WormEnemy : BaseEnemy
     // Update is called once per frame
     protected override void Update()
     {
-        if (GameManager.Instance.GetPauseState()) return;
+        if (GameManager.Instance.GetPauseState())
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
 
         switch (fsm.State)
         {

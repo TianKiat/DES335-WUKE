@@ -8,7 +8,7 @@ public class BaseBullet : MonoBehaviour
     public bool IsPlayerBullet { get; set; }
 
 
-    private float lifeTime = 10.0f;
+    private float lifeTime = 5.0f;
     private float currentLifeTime = 0.0f;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,6 +45,6 @@ public class BaseBullet : MonoBehaviour
     {
         currentLifeTime += Time.deltaTime;
         if (currentLifeTime >= lifeTime)
-            Destroy(this);
+            Destroy(gameObject);
     }
 }
