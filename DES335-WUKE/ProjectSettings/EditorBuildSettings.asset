@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_1_Sub_3.unity
     guid: d9fdde00186cb0a48bd8ceba3e667a5b
+  - enabled: 1
+    path: Assets/Scenes/Storylet.unity
+    guid: 98e10e6cd305e6948bec4d92b59a4a2c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: de6ca8ca760cdb247bf7bf0855ce70c3, type: 2}
