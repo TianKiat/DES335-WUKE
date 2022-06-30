@@ -7,6 +7,12 @@ public class FollowCam : MonoBehaviour
     public Transform target;
     public float FollowSpeed = 5.0f;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
     // Update is called once per frame
     void Update()
     {

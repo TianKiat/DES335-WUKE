@@ -7,6 +7,7 @@ public class Individual_Dreamslot : MonoBehaviour
 {
     //backing colour variables
     [SerializeField] Image m_SlotImage;
+    [SerializeField] Color m_UnrolledColour;
     [SerializeField] Color m_NeutralColour;
     [SerializeField] Color m_GoodColour;
     [SerializeField] Color m_BadColour;
@@ -97,5 +98,10 @@ public class Individual_Dreamslot : MonoBehaviour
         {
             m_DreamObj[i].SetActive(false);
         }
+    }
+
+    public void ResetSlot()
+    {
+        m_SlotImage.color = m_UnrolledColour;
     }
 }

@@ -93,6 +93,8 @@ public class PlayerController : MonoBehaviour
 
         // Initialize runtime variables
         CurrentHealth = MaxHealth;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

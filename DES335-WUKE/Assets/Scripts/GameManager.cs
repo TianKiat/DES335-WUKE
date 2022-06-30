@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     private static float PlayerCurrentHealth = 100.0f;
 
+    private Transform spawnPoint;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         SetPauseState(true);
-        OpenDreamPot();
+        //OpenDreamPot();
         HUD_Manager.InitHUD();
     }
 
@@ -207,11 +209,15 @@ public class GameManager : MonoBehaviour
     }
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
+        spawnPoint = GameObject.FindGameObjectWithTag("Spawn Point").GetComponent<Transform>();
+        PlayerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         foreach (var stat in PlayerStats)
         {
             PlayerInstance.SetStat(stat.Key, stat.Value);
         }
         PlayerInstance.SetCurrentHealth(PlayerCurrentHealth);
+        PlayerInstance.transform.position = spawnPoint.transform.position;
+        OpenDreamPot();
     }
 
     public void UpdateHUD()

@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(CircleCollider2D))]
-public class RoomTransition : MonoBehaviour
+public class LevelTransition : MonoBehaviour
 {
-    [SerializeField]
-    RoomTransition otherTransition;
-    
     bool canTransit;
+
+    [SerializeField]
+    string levelToLoad;
 
     [SerializeField]
     bool isLocked;
@@ -23,15 +23,15 @@ public class RoomTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectSprite = GetComponent<SpriteRenderer>();
         canTransit = true;
+        objectSprite = GetComponent<SpriteRenderer>();
         SetLock(isLocked);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,8 +42,7 @@ public class RoomTransition : MonoBehaviour
             {
                 if (canTransit)
                 {
-                    collision.transform.position = otherTransition.transform.position;
-                    otherTransition.SetCanTransit(false);       //Prevent constant tp-ing
+                    SceneManager.LoadScene(levelToLoad);
                 }
             }
         }

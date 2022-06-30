@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SlotImage: {fileID: 318357067986095750}
+  m_UnrolledColour: {r: 1, g: 0.85490197, b: 0.0627451, a: 1}
   m_NeutralColour: {r: 1, g: 1, b: 1, a: 1}
   m_GoodColour: {r: 0.1150527, g: 1, b: 0, a: 1}
   m_BadColour: {r: 1, g: 0, b: 0, a: 1}
@@ -1248,6 +1249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SlotImage: {fileID: 318357068275384982}
+  m_UnrolledColour: {r: 1, g: 0.85490197, b: 0.0627451, a: 1}
   m_NeutralColour: {r: 1, g: 1, b: 1, a: 1}
   m_GoodColour: {r: 0.1150527, g: 1, b: 0, a: 1}
   m_BadColour: {r: 1, g: 0, b: 0, a: 1}
@@ -3469,6 +3471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SlotImage: {fileID: 318357068745747496}
+  m_UnrolledColour: {r: 1, g: 0.854902, b: 0.0627451, a: 1}
   m_NeutralColour: {r: 1, g: 1, b: 1, a: 1}
   m_GoodColour: {r: 0.1150527, g: 1, b: 0, a: 1}
   m_BadColour: {r: 1, g: 0, b: 0, a: 1}
@@ -4949,6 +4952,9 @@ MonoBehaviour:
   - {fileID: 318357068745747494}
   - {fileID: 318357068275384980}
   - {fileID: 318357067986095748}
+  rollButton: {fileID: 318357067842008034}
+  dreamName: {fileID: 318357068965566918}
+  dreamDescription: {fileID: 318357069315439404}
 --- !u!1 &318357069277851404
 GameObject:
   m_ObjectHideFlags: 0

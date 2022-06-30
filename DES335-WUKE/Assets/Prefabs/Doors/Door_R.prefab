@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherTransition: {fileID: 0}
   isLocked: 0
+  lockedSprite: {fileID: 712743776, guid: d0ad91aefa95e9a45bce9eac1604d3ce, type: 3}
+  unlockedSprite: {fileID: -1017250609, guid: d0ad91aefa95e9a45bce9eac1604d3ce, type: 3}
 --- !u!61 &1664807285639982563
 BoxCollider2D:
   m_ObjectHideFlags: 0

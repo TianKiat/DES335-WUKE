@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Dreampot : MonoBehaviour
 {
@@ -8,6 +10,15 @@ public class Dreampot : MonoBehaviour
 
     List<string> m_LuckRoll = new List<string>();
     private Animator m_Anim;
+    
+    [SerializeField]
+    Button rollButton;
+
+    //Text elements
+    [SerializeField]
+    TextMeshProUGUI dreamName;
+    [SerializeField]
+    TextMeshProUGUI dreamDescription;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +40,24 @@ public class Dreampot : MonoBehaviour
         {
             m_IndividualSlots[i].DisableDream();
         }
+
+        //Clear current data on slots
+        for (int i = 0; i < m_IndividualSlots.Count; ++i)
+        {
+            m_IndividualSlots[i].ResetSlot();
+        }
+
+        //Clear text data on dream pot
+        dreamName.text = "";
+        dreamDescription.text = "";
     }
 
     public void OpenDreampot()
     {
+        if(m_Anim == null)
+            m_Anim = GetComponent<Animator>();
         m_Anim.Play("OpenDreampot");
+        rollButton.enabled = true;
     }
 
     //feed in luck stat from player manager and roll chances for neutral/good/bad dreams
