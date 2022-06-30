@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
     public LevelTransition[] levelTransitionsToUnlock;
 
     private bool doorsUnlocked = false;
+    private bool enteredRoom = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,11 +60,13 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isRoomCleared && collision.gameObject.CompareTag("Player"))
+        if (!doorsUnlocked && !isRoomCleared && !enteredRoom && collision.gameObject.CompareTag("Player"))
         {
+            enteredRoom = true;
             foreach (GameObject enemy in RoomEnemies)
             {
-                enemy.SetActive(true);
+                //if (enemy != null)
+                    enemy.SetActive(true);
             }
         }
     }
