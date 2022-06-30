@@ -17,7 +17,13 @@ public class Trinket : MonoBehaviour
     [SerializeField]
     private float coinCost;
     private bool isShopTrinket;
+    private SpriteRenderer trinketSprite;
     public bool isOnGround;
+
+    private void Start()
+    {
+        trinketSprite = GetComponent<SpriteRenderer>();
+    }
 
     public float GetStbModifier()
     {
@@ -44,5 +50,10 @@ public class Trinket : MonoBehaviour
     public bool GetIsShopTrinket()
     {
         return isShopTrinket;
+    }
+
+    public Sprite GetTrinketSprite()
+    {
+        return trinketSprite.sprite;
     }
 }

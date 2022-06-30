@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class HUD_Manager : MonoBehaviour
 {
+    public static HUD_Manager Instance;
+
     [SerializeField] Stat_HUD m_Stat_HUD;
     //[SerializeField] Trinket_HUD m_Trinket_HUD;
     [SerializeField] Coins_HUD m_Coin_HUD;
+    [SerializeField] Trinket_HUD m_Trinket_HUD;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     public void InitHUD()
@@ -29,5 +30,10 @@ public class HUD_Manager : MonoBehaviour
     public void UpdateHUD()
     {
         m_Stat_HUD.UpdateStatsDisplay();
+    }
+
+    public Trinket_HUD GetTrinketHUD()
+    {
+        return m_Trinket_HUD;
     }
 }

@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Trinket_HUD : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    Image trinketIconSprite;
 
-    // Update is called once per frame
-    void Update()
+    public void SetTrinketSprite(Sprite newSprite)
     {
-        
+        trinketIconSprite.sprite = newSprite;
     }
 }
