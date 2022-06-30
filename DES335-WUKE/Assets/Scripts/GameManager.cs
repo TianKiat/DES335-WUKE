@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         { "opt", 5 }
     };
 
-    private static float PlayerCurrentHealth = 100.0f;
+    private static float PlayerCurrentHealth = 125.0f;
 
     private Transform spawnPoint;
 

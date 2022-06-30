@@ -68,8 +68,8 @@ public class WormEnemy : BaseEnemy
                     if (Time.time >= nextAttackTime)
                     {
                         nextAttackTime = Time.time + AttackDelay;
-                        GameManager.Instance.PlayerInstance.GetComponent<Rigidbody2D>().AddForce(
-                            transform.right * knockBackForce * (1.0f + DamageModifier), ForceMode2D.Impulse);
+                        //GameManager.Instance.PlayerInstance.GetComponent<Rigidbody2D>().AddForce(
+                        //    transform.right * knockBackForce * (1.0f + DamageModifier), ForceMode2D.Impulse);
                         GameManager.Instance.PlayerInstance.TakeDamage(Damage * (1.0f + DamageModifier));
                     }
                     else if (fsm.State != States.Chase)
@@ -103,7 +103,7 @@ public class WormEnemy : BaseEnemy
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if ((fsm.State != States.Dead || fsm.State != States.Dying) &&
             collision.gameObject == GameManager.Instance.PlayerInstance.gameObject)
