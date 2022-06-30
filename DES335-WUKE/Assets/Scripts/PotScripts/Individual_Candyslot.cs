@@ -52,6 +52,7 @@ public class Individual_Candyslot : MonoBehaviour
         }
 
         Debug.Log("Candy Selected");
+        GameManager.Instance.UpdateHUD();
         m_Levelpot.ResetLevelpot();
     }
 

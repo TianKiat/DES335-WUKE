@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Dream_Manager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Dream_Manager : MonoBehaviour
     [SerializeField] string m_WC_Neutral_3;
 
 
-    [SerializeField] Text m_DisplayText;
+    [SerializeField] TextMeshProUGUI m_DisplayText;
     private int m_StoryValue;
     [SerializeField] private List<int> m_DreamsList = new List<int>();
     private string m_Template_Part1 = " The thought of ";

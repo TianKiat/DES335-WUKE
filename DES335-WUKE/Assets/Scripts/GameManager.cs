@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Dreampot Dreampot;
     [SerializeField] Levelpot Levelpot;
+    [SerializeField] HUD_Manager HUD_Manager;
+
+    //level cost variables
+    private float LevelCost = 100;
 
     //this is to track all active dreams in the game
     private List<int> ActiveDreams = new List<int>();
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
         PlayerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         SetPauseState(true);
         OpenDreamPot();
+        HUD_Manager.InitHUD();
     }
 
     // Update is called once per frame
@@ -207,5 +212,22 @@ public class GameManager : MonoBehaviour
             PlayerInstance.SetStat(stat.Key, stat.Value);
         }
         PlayerInstance.SetCurrentHealth(PlayerCurrentHealth);
+    }
+
+    public void UpdateHUD()
+    {
+        HUD_Manager.UpdateHUD();
+    }
+
+    //level cost functions
+    public float CheckLevelCost()
+    {
+        return LevelCost;
+    }
+
+    public void UpdateLevelCost()
+    {
+        LevelCost = LevelCost * 1.03f;
+        LevelCost = Mathf.RoundToInt(LevelCost);
     }
 }

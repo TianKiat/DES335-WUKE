@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        holdingCoins = 0;
+        holdingCoins = 500;
 
         input_vec = Vector2.zero;
     }
@@ -271,6 +271,16 @@ public class PlayerController : MonoBehaviour
 
         //Update UI after this part
 
+    }
+
+    public void SubtractCoin(float amount)
+    {
+        holdingCoins -= amount;
+    }
+
+    public float GetHoldingCoins()
+    {
+        return holdingCoins;
     }
 
     public void AddHealth(float healPercentage)

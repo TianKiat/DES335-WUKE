@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Levelpot : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Levelpot : MonoBehaviour
     [SerializeField] GameObject m_Ballbutton;
     [SerializeField] GameObject m_Closebutton;
     [SerializeField] GameObject m_CostUI;
+
+    private float m_CostToRoll;
 
     // Start is called before the first frame update
     void Start()
@@ -38,19 +41,32 @@ public class Levelpot : MonoBehaviour
 
     public void OpenLevelpot()
     {
+        UpdateCost();
         m_Anim.Play("OpenLevelpot");
     }
 
     public void StartRolling()
     {
-        //update possible candies. if a stat is 1 that bane candy should not appear
-        UpdatePossibleSelections();
+        float temp = GameManager.Instance.PlayerInstance.GetHoldingCoins();
 
-        m_Anim.Play("RollLevelpot");
+        if (temp > m_CostToRoll)
+        {
+            //deduct money
+            GameManager.Instance.PlayerInstance.SubtractCoin(m_CostToRoll);
 
-        m_Ballbutton.SetActive(false);
-        m_Closebutton.SetActive(false);
-        m_CostUI.SetActive(false);
+            //update possible candies. if a stat is 1 that bane candy should not appear
+            UpdatePossibleSelections();
+
+            m_Anim.Play("RollLevelpot");
+
+            m_Ballbutton.SetActive(false);
+            m_Closebutton.SetActive(false);
+            m_CostUI.SetActive(false);
+
+            //update next cost
+            GameManager.Instance.UpdateLevelCost();
+            UpdateCost();
+        }
     }
 
     public void ResetLevelpot()
@@ -63,6 +79,13 @@ public class Levelpot : MonoBehaviour
         m_Ballbutton.SetActive(true);
         m_Closebutton.SetActive(true);
         m_CostUI.SetActive(true);
+    }
+
+    private void UpdateCost()
+    {
+        m_CostToRoll = GameManager.Instance.CheckLevelCost();
+
+        m_CostUI.GetComponent<TextMeshProUGUI>().text = m_CostToRoll.ToString() + " To Roll";
     }
 
     private void RollSlots()

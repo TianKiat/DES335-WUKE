@@ -74,7 +74,7 @@ public class WeaponSystem : MonoBehaviour
     private void Update()
     {
         // update ammo text
-        ammoText.text = "Mag: " + WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].CurrentMagazineCapacity
+        ammoText.text = "" + WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].CurrentMagazineCapacity
             + " / " + WeaponLoadOut[currentWeaponLoadOut[currentWeaponIndex]].MagazineCapacity;
 
 
