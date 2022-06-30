@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Dreampot : MonoBehaviour
 {
@@ -58,6 +59,18 @@ public class Dreampot : MonoBehaviour
             m_Anim = GetComponent<Animator>();
         m_Anim.Play("OpenDreampot");
         rollButton.enabled = true;
+    }
+
+    public void RollAnim()
+    {
+        if (SceneManager.GetActiveScene().name == "Level_1_Sub_1")
+        {
+            m_Anim.Play("Start_Roll");
+        }
+        else
+        {
+            m_Anim.Play("Start_Roll_2");
+        }
     }
 
     //feed in luck stat from player manager and roll chances for neutral/good/bad dreams
