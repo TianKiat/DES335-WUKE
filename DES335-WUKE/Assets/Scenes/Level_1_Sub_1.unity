@@ -2838,6 +2838,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3653370262559288726, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
+      propertyPath: TrinketBag.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5745404671266512404, guid: 2ab5d795383e88a46ac970794dbbed1f, type: 3}
       propertyPath: TrinketPoint
       value: 

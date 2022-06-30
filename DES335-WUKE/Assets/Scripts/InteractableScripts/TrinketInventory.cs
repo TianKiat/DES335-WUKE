@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrinketInventory : MonoBehaviour
 {
     [SerializeField]
-    private Trinket[] TrinketBag = new Trinket[3];
+    private Trinket[] TrinketBag = new Trinket[1];
     private int currentTrinketIndex;
     private int numCurrentTrinkets = 0;
 
