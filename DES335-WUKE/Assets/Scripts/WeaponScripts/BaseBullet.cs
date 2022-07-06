@@ -27,6 +27,7 @@ public class BaseBullet : MonoBehaviour
             {
                 baseEnemy.TakeDamage(Damage);
                 Destroy(gameObject);
+                AddKnockback(other);
             }
 
         }
@@ -34,11 +35,16 @@ public class BaseBullet : MonoBehaviour
         {
             GameManager.Instance.PlayerInstance.TakeDamage(Damage);
             Destroy(gameObject);
+            AddKnockback(other);
         }
 
-        if(other.GetComponent<Rigidbody2D>() != null)
-            other.GetComponent<Rigidbody2D>().AddForce(
-                            transform.right * Damage, ForceMode2D.Impulse);
+    }
+
+    protected void AddKnockback(GameObject other)
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+            other.GetComponent<Rigidbody2D>().AddForce(rb.velocity * 0.75f, ForceMode2D.Impulse);
     }
 
     private void Update()

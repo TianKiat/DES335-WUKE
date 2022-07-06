@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 748811262950083149}
   - component: {fileID: 748811262950083150}
-  m_Layer: 0
+  - component: {fileID: 8005638040011917156}
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,6 +85,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &8005638040011917156
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748811262950083148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.3}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &748811263594855534
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +177,8 @@ MonoBehaviour:
   healthOrbDropObj: {fileID: 2617497626883302719, guid: 2be466e7a92e33b44a9645d0ca2c9020, type: 3}
   enemyTier: 2
   rotationstep: 5
-  moveSpeed: 4
-  knockBackForce: 15
+  moveSpeed: 2
+  knockBackForce: 10
   AttackDelay: 1
   chaseDelay: 1.5
 --- !u!50 &748811263594855530

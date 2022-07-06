@@ -9,17 +9,19 @@ public class WormEnemy : BaseEnemy
     public float ChaseSquirmForce = 5.0f;
     public float SquirmDelay = 1.0f;
     public float AttackDelay = 0.5f;
-    public float knockBackForce = 4.0f;
+    public float knockBackForce = 5.0f;
     public float SquirmMaxRotation = 10.0f;
 
 
     private float nextSquirmTime = 0.0f;
     private float nextAttackTime = 0.0f;
+    private float stunTime;
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        fsm.ChangeState(States.Patrol);
         CurrentHealth = MaxHealth = BaseHealth = 10.0f;
     }
 
@@ -36,7 +38,8 @@ public class WormEnemy : BaseEnemy
         {
             case States.Idle:
                 {
-                    fsm.ChangeState(States.Patrol);
+                    if (Time.time > stunTime)
+                        fsm.ChangeState(States.Chase);
                 }
                 break;
             case States.Patrol:
@@ -68,8 +71,9 @@ public class WormEnemy : BaseEnemy
                     if (Time.time >= nextAttackTime)
                     {
                         nextAttackTime = Time.time + AttackDelay;
-                        //GameManager.Instance.PlayerInstance.GetComponent<Rigidbody2D>().AddForce(
-                        //    transform.right * knockBackForce * (1.0f + DamageModifier), ForceMode2D.Impulse);
+                        Vector3 target = (GameManager.Instance.PlayerInstance.transform.position - transform.position).normalized;
+                        GameManager.Instance.PlayerInstance.GetComponent<Rigidbody2D>().AddForce(
+                            target * knockBackForce * (1.0f + DamageModifier), ForceMode2D.Impulse);
                         GameManager.Instance.PlayerInstance.TakeDamage(Damage * (1.0f + DamageModifier));
                     }
                     else if (fsm.State != States.Chase)
@@ -99,7 +103,10 @@ public class WormEnemy : BaseEnemy
         if (CurrentHealth <= 0.0f)
             fsm.ChangeState(States.Dying);
         else if (fsm.State != States.Chase)
-            fsm.ChangeState(States.Chase);
+        {
+            stunTime = Time.time + 1.0f;
+            fsm.ChangeState(States.Idle);
+        }
 
     }
 

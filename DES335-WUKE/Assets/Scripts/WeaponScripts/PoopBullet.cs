@@ -20,6 +20,7 @@ public class PoopBullet : BaseBullet
             {
                 baseEnemy.ApplyDOT(DOT(4, Damage, baseEnemy));
                 Destroy(gameObject);
+                AddKnockback(other);
             }
 
         }

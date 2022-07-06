@@ -281,8 +281,8 @@ MonoBehaviour:
   healthOrbDropObj: {fileID: 2617497626883302719, guid: 2be466e7a92e33b44a9645d0ca2c9020, type: 3}
   enemyTier: 3
   rotationstep: 3
-  moveSpeed: 2
-  knockBackForce: 20
+  moveSpeed: 1
+  knockBackForce: 10
   AttackDelay: 1
   chaseDelay: 2.5
   wormsToSpawn: 5

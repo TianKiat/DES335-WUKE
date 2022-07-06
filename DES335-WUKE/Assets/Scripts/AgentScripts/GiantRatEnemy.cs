@@ -9,7 +9,7 @@ public class GiantRatEnemy : BaseEnemy
     public float rotationstep = 10.0f;
     public float moveSpeed = 5.0f;
 
-    public float knockBackForce = 4.0f;
+    public float knockBackForce = 10.0f;
 
     public float AttackDelay = 1.5f;
     public float chaseDelay = 2.5f;
@@ -51,9 +51,9 @@ public class GiantRatEnemy : BaseEnemy
                 break;
             case States.Attack:
                 {
-                    rb.AddForce(transform.right * 15.0f, ForceMode2D.Impulse);
+                    Vector3 target = (GameManager.Instance.PlayerInstance.transform.position - transform.position).normalized;
                     GameManager.Instance.PlayerInstance.GetComponent<Rigidbody2D>().AddForce(
-                            transform.right * knockBackForce * (1.0f + DamageModifier), ForceMode2D.Impulse);
+                        target * knockBackForce * (1.0f + DamageModifier), ForceMode2D.Impulse);
                     GameManager.Instance.PlayerInstance.TakeDamage(Damage * (1.0f + DamageModifier));
 
                     fsm.ChangeState(States.Idle);
