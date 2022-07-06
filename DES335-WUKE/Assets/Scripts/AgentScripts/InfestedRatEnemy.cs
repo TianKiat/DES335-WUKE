@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InfestedRatEnemy : GiantRatEnemy
 {
-    public int wormsToSpawn = 5;
+    public GameObject[] wormsToSpawn;
     public GameObject worm;
     public override void Start()
     {
@@ -13,13 +13,23 @@ public class InfestedRatEnemy : GiantRatEnemy
     }
     protected override void Dying_Enter()
     {
-        for (int i = 0; i < wormsToSpawn; ++i)
+        for (int i = 0; i < wormsToSpawn.Length; ++i)
         {
-            Vector3 position = transform.position + new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f), 0.0f);
+            Vector3 direction = Random.insideUnitCircle.normalized;
 
-            Instantiate(worm, position, Quaternion.identity);
+            wormsToSpawn[i].transform.SetParent(null);
+            wormsToSpawn[i].SetActive(true);
+            wormsToSpawn[i].GetComponent<Rigidbody2D>().AddForce(direction * Random.Range(5.0f, 10.0f), ForceMode2D.Impulse);
         }
         base.Dying_Enter();
 
+    }
+
+    void OnEnable()
+    {
+        for (int i = 0; i < wormsToSpawn.Length; ++i)
+        {
+            wormsToSpawn[i].SetActive(false);
+        }
     }
 }

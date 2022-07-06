@@ -30,7 +30,8 @@ public class PoopBullet : BaseBullet
     {
         for (int i = 0; i < ticks; ++i)
         {
-            enemy.TakeDamage(damage);
+            if (enemy != null)
+                enemy.TakeDamage(damage);
             yield return new WaitForSeconds(DOTTickRate);
 
             // spawn or play some vfx
