@@ -20,7 +20,7 @@ public class GiantRatEnemy : BaseEnemy
     public override void Start()
     {
         base.Start();
-        CurrentHealth = MaxHealth = BaseHealth = 25.0f;
+        CurrentHealth = MaxHealth = BaseHealth;
     }
 
     // Update is called once per frame

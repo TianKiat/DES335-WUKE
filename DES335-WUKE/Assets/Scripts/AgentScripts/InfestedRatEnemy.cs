@@ -9,7 +9,7 @@ public class InfestedRatEnemy : GiantRatEnemy
     public override void Start()
     {
         base.Start();
-        CurrentHealth = MaxHealth = BaseHealth = 40.0f;
+        CurrentHealth = MaxHealth = BaseHealth;
     }
     protected override void Dying_Enter()
     {

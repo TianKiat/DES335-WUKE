@@ -23,8 +23,8 @@ public class SpittingWormEnemy : BaseEnemy
         radiusSqr = (range * range);
 
         playerTransform = GameManager.Instance.PlayerInstance.transform;
+        CurrentHealth = MaxHealth = BaseHealth;
 
-        CurrentHealth = MaxHealth = BaseHealth = 10.0f;
     }
 
     // Update is called once per frame

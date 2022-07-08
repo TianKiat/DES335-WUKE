@@ -22,7 +22,8 @@ public class WormEnemy : BaseEnemy
     {
         base.Start();
         fsm.ChangeState(States.Patrol);
-        CurrentHealth = MaxHealth = BaseHealth = 10.0f;
+        CurrentHealth = MaxHealth = BaseHealth;
+
     }
 
     // Update is called once per frame

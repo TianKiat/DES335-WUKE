@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92906802bc2317840b50037f28468c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 100
-  Damage: 2
+  BaseHealth: 80
+  Damage: 12
   coinDropAmount: 12
   PartyHat: {fileID: 1488385711}
   healthbar: {fileID: 1640966383742863392}

@@ -94,6 +94,7 @@ public class BaseEnemy : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         CurrentHealth -= damage;
+        Debug.Log("Take damage " + damage);
         healthbar.UpdateHealth(CurrentHealth / MaxHealth);
     }
 

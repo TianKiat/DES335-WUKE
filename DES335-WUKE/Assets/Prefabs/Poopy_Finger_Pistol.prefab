@@ -99,15 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponIndex: 1
-  FireInterval: 0.25
+  FireInterval: 0.2
   DefaultBulletSpread: 1.1
-  MovementBulletSpread: 1.2
-  MagazineCapacity: 30
-  ReloadTime: 1
+  MovementBulletSpread: 1.5
+  MagazineCapacity: 15
+  ReloadTime: 2
   BulletPrefab: {fileID: 1855295144073483228, guid: c9e935a9617294b49983526e6c2f329f, type: 3}
-  DamagePerBullet: 5
-  BulletSpeed: 20
-  coinCost: 0
+  DamagePerBullet: 40
+  BulletSpeed: 10
+  coinCost: 50
   isOnGround: 0
 --- !u!61 &482040476793789084
 BoxCollider2D:

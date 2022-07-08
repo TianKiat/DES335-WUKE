@@ -97,11 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8957c0c7d119c41acc9400aa85e563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireInterval: 0.3
+  WeaponIndex: 0
+  FireInterval: 0.2
   DefaultBulletSpread: 1.1
   MovementBulletSpread: 1.2
-  MagazineCapacity: 30
-  ReloadTime: 1
+  MagazineCapacity: 15
+  ReloadTime: 2
   BulletPrefab: {fileID: 1855295144073483228, guid: d8a1a1dd468d9414381814fe52115265, type: 3}
-  DamagePerBullet: 5
-  BulletSpeed: 20
+  DamagePerBullet: 20
+  BulletSpeed: 15
+  coinCost: 20
+  isOnGround: 0

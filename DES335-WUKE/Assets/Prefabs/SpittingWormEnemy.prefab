@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ff243e072fa3e4290895470104c4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 100
-  Damage: 2
+  BaseHealth: 80
+  Damage: 12
   coinDropAmount: 14
   PartyHat: {fileID: 7619638504123635205}
   healthbar: {fileID: 6167306100110624045}
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8957c0c7d119c41acc9400aa85e563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponIndex: 0
   FireInterval: 1
   DefaultBulletSpread: 0.1
   MovementBulletSpread: 0.1
@@ -236,6 +237,8 @@ MonoBehaviour:
   BulletPrefab: {fileID: 1855295144073483228, guid: 5934f216ad727c342a30eed170610c6e, type: 3}
   DamagePerBullet: 2
   BulletSpeed: 5
+  coinCost: 0
+  isOnGround: 0
 --- !u!1 &3161701126672498415
 GameObject:
   m_ObjectHideFlags: 0
