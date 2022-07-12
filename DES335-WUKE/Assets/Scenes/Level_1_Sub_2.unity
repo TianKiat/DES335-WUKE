@@ -2300,6 +2300,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cognitive Trinket
       objectReference: {fileID: 0}
+    - target: {fileID: 8582278458807504440, guid: 119017df63455cd438a725fdc5d9811b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1527965176, guid: d0ad91aefa95e9a45bce9eac1604d3ce, type: 3}
+    - target: {fileID: 8582278458807504440, guid: 119017df63455cd438a725fdc5d9811b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582278458807504440, guid: 119017df63455cd438a725fdc5d9811b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582278458807504440, guid: 119017df63455cd438a725fdc5d9811b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119017df63455cd438a725fdc5d9811b, type: 3}
 --- !u!4 &603286343 stripped
@@ -2789,6 +2805,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3899169653846711476, guid: 0d038e44df8a5764894332ca9be1facc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 23008848, guid: d0ad91aefa95e9a45bce9eac1604d3ce, type: 3}
+    - target: {fileID: 3899169653846711476, guid: 0d038e44df8a5764894332ca9be1facc, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3899169653846711476, guid: 0d038e44df8a5764894332ca9be1facc, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3899169653846711476, guid: 0d038e44df8a5764894332ca9be1facc, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3899169653846711477, guid: 0d038e44df8a5764894332ca9be1facc, type: 3}
       propertyPath: m_Name
       value: Stability Trinket
@@ -3217,6 +3249,22 @@ PrefabInstance:
     - target: {fileID: 6385502508938717068, guid: ef4cf77c640433d4da19aed2145451e5, type: 3}
       propertyPath: m_Name
       value: Lucidity Trinket
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385502508938717069, guid: ef4cf77c640433d4da19aed2145451e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -424223122, guid: d0ad91aefa95e9a45bce9eac1604d3ce, type: 3}
+    - target: {fileID: 6385502508938717069, guid: ef4cf77c640433d4da19aed2145451e5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385502508938717069, guid: ef4cf77c640433d4da19aed2145451e5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385502508938717069, guid: ef4cf77c640433d4da19aed2145451e5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef4cf77c640433d4da19aed2145451e5, type: 3}
