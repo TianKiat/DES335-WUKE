@@ -605,9 +605,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6763886262668643565, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763886262668643565, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.424
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960796500102219588, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 748811263594855529, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+--- !u!1 &2151265626393969465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7960796500102219588, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
+  m_PrefabInstance: {fileID: 8331864427191895165}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4729514820755450313 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3603484598789369268, guid: 820d8585fa6fb6f4d8e2b02e5104cc73, type: 3}
@@ -646,6 +663,7 @@ MonoBehaviour:
   coinDropAmount: 60
   PartyHat: {fileID: 1213774703053225541}
   healthbar: {fileID: 6498204735495138053}
+  censor: {fileID: 2151265626393969465}
   buffIcon: {fileID: 4729514820755450313}
   dreamCoinDropObj: {fileID: 8271138304905800653, guid: 34228579b9d868c41b744aa66beb0093, type: 3}
   healthOrbDropObj: {fileID: 2617497626883302719, guid: 2be466e7a92e33b44a9645d0ca2c9020, type: 3}

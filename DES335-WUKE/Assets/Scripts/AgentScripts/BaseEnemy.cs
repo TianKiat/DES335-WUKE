@@ -24,6 +24,8 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField]
     private HealthBar healthbar;
     [SerializeField]
+    private GameObject censor;
+    [SerializeField]
     private GameObject buffIcon;
     [SerializeField]
     private GameObject dreamCoinDropObj;
@@ -115,7 +117,7 @@ public class BaseEnemy : MonoBehaviour
 
     public void Activatejapanese()
     {
-        healthbar.gameObject.SetActive(false);
+        censor.SetActive(true);
     }
 
     public void ActivateGymRat()

@@ -137,7 +137,6 @@ public class GameManager : MonoBehaviour
                 break;
             case 8:
                 {
-                    PlayerInstance.Activatejapanese();
                     foreach (BaseEnemy enemy in activeEnemies)
                     {
                         enemy.Activatejapanese();
