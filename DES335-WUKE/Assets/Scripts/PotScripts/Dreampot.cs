@@ -91,8 +91,8 @@ public class Dreampot : MonoBehaviour
                 m_LuckRoll.Add("Neutral");
                 break;
             case "Bad":
-                m_LuckRoll.Add("Neutral");
-                m_LuckRoll.Add("Neutral");
+                m_LuckRoll.Add("Bad");
+                m_LuckRoll.Add("Bad");
                 m_LuckRoll.Add("Bad");
                 break;
             default:
