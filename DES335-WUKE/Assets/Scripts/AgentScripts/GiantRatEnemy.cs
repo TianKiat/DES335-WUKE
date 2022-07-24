@@ -14,6 +14,8 @@ public class GiantRatEnemy : BaseEnemy
     public float AttackDelay = 1.5f;
     public float chaseDelay = 2.5f;
 
+    public Transform body;
+
     private float nextChaseTime = 0.0f;
 
     // Start is called before the first frame update
@@ -46,7 +48,7 @@ public class GiantRatEnemy : BaseEnemy
                 {
                     Vector3 target = (GameManager.Instance.PlayerInstance.transform.position - transform.position).normalized;
                     rb.velocity = target * moveSpeed;
-                    transform.localScale = new Vector3(target.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
+                    body.localScale = new Vector3(target.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
                 }
                 break;
             case States.Attack:
@@ -64,8 +66,6 @@ public class GiantRatEnemy : BaseEnemy
             default:
                 break;
         }
-
-        transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z);
     }
 
     void Idle_Enter()

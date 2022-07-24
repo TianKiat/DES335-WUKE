@@ -183,6 +183,7 @@ MonoBehaviour:
   knockBackForce: 10
   AttackDelay: 1
   chaseDelay: 1.5
+  body: {fileID: 748811262950083149}
 --- !u!50 &748811263594855530
 Rigidbody2D:
   serializedVersion: 4

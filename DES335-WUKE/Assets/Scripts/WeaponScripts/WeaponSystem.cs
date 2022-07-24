@@ -76,7 +76,6 @@ public class WeaponSystem : MonoBehaviour
 
     public Vector2 CheckWeaponLoadout()
     {
-        Debug.Log(WeaponLoadOut);
         Vector2 temp = new Vector2(69, 69);
         temp.x = WeaponLoadOut[0].WeaponIndex;
         

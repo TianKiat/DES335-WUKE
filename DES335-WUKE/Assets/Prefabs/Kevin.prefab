@@ -308,7 +308,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.8, y: 1.2}
   m_Direction: 0
 --- !u!114 &5745404671266512404
@@ -329,7 +329,7 @@ MonoBehaviour:
   DamageRecoveryTime: 0.55
   WeaponSystem: {fileID: 362501026}
   WeaponPivot: {fileID: 5745404671363405569}
-  TrinketPoint: {fileID: 0}
+  TrinketPoint: {fileID: 4447329560022934134}
   PeeTrail: {fileID: 8591723882894743053}
   PartyHat: {fileID: 3264674944542741717}
   healthBar: {fileID: 1215497572490653476}
@@ -349,7 +349,6 @@ MonoBehaviour:
   WeaponLoadOut:
   - {fileID: 1723427287}
   - {fileID: 0}
-  - {fileID: 0}
   ammoText: {fileID: 0}
   reloadText: {fileID: 0}
 --- !u!114 &3653370262559288726
@@ -365,8 +364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrinketBag:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &800402117
 MonoBehaviour:
@@ -651,6 +648,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5745404672243191249}
     m_Modifications:
+    - target: {fileID: 1215497571893675492, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215497571893675492, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215497571893675492, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215497571893675492, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.41176474
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215497571893675492, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215497571893675492, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.454902
+      objectReference: {fileID: 0}
     - target: {fileID: 1215497572505812869, guid: fef9a26371a31b1479a1a7ee0f12790c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -824,6 +845,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finger_Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 7013937611422837637, guid: 9802dd4ebfaf24a49924657a19af7cba, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013937611422837639, guid: 9802dd4ebfaf24a49924657a19af7cba, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9802dd4ebfaf24a49924657a19af7cba, type: 3}
 --- !u!114 &1723427287 stripped
@@ -831,12 +860,43 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3381433676353814784, guid: 9802dd4ebfaf24a49924657a19af7cba, type: 3}
   m_PrefabInstance: {fileID: 3381433675708475607}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5745404671333860178}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f8957c0c7d119c41acc9400aa85e563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5745404671333860178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7013937611422837637, guid: 9802dd4ebfaf24a49924657a19af7cba, type: 3}
+  m_PrefabInstance: {fileID: 3381433675708475607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1740661960
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745404671333860178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.56, y: 2.56}
+  m_EdgeRadius: 0
 --- !u!4 &5745404671333860179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7013937611422837636, guid: 9802dd4ebfaf24a49924657a19af7cba, type: 3}

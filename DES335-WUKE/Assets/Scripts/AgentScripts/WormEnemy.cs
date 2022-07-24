@@ -11,6 +11,7 @@ public class WormEnemy : BaseEnemy
     public float AttackDelay = 0.5f;
     public float knockBackForce = 5.0f;
     public float SquirmMaxRotation = 10.0f;
+    public Transform body;
 
 
     private float nextSquirmTime = 0.0f;
@@ -51,7 +52,7 @@ public class WormEnemy : BaseEnemy
 
                         Vector2 direction = Random.insideUnitCircle.normalized;
                         rb.AddForce(direction * IdleSquirmForce, ForceMode2D.Impulse);
-                        transform.localScale = new Vector3(direction.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
+                        body.localScale = new Vector3(direction.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
                     }
                 }
                 break;
@@ -63,7 +64,7 @@ public class WormEnemy : BaseEnemy
 
                         Vector3 target = (GameManager.Instance.PlayerInstance.transform.position - transform.position).normalized;
                         rb.AddForce(target * ChaseSquirmForce, ForceMode2D.Impulse);
-                        transform.localScale = new Vector3(target.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
+                        body.localScale = new Vector3(target.x > 0 ? 1.0f : -1.0f, 1.0f, 1.0f);
                     }
                 }
                 break;
