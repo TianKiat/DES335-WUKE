@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        holdingCoins = 500;
+        holdingCoins = 0;
 
         input_vec = Vector2.zero;
     }

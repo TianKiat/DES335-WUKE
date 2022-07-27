@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48764934782622f43b860f02aee32048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 320
+  BaseHealth: 1500
   Damage: 35
   coinDropAmount: 60
   PartyHat: {fileID: 1213774703053225541}
@@ -673,6 +673,7 @@ MonoBehaviour:
   knockBackForce: 10
   AttackDelay: 1
   chaseDelay: 2.5
+  body: {fileID: 0}
   wormsToSpawn:
   - {fileID: 7414682242361819576}
   - {fileID: 4956920443482836247}
