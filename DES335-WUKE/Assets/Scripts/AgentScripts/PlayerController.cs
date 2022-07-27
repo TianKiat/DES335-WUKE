@@ -240,8 +240,8 @@ public class PlayerController : MonoBehaviour
         {
             // play farting noise and vfx
         }
-        if (CurrentHealth <= 0)
-            GameManager.Instance.GameOver();
+        if (CurrentHealth <= 0) ;
+            //GameManager.Instance.GameOver();
     }
 
     public void ActivatePee()

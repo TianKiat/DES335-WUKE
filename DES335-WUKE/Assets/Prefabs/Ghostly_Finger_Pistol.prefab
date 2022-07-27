@@ -104,7 +104,7 @@ MonoBehaviour:
   MagazineCapacity: 15
   ReloadTime: 2
   BulletPrefab: {fileID: 1855295144073483228, guid: 2f6ccb12abdd8bf4b9668ba087440924, type: 3}
-  DamagePerBullet: 40
+  DamagePerBullet: 30
   BulletSpeed: 20
   coinCost: 50
   isOnGround: 0
