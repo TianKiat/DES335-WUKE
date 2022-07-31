@@ -151,6 +151,7 @@ public class TrinketInventory : MonoBehaviour
         TrinketBag[index] = trinket;
         ResetTransform(trinket);
         HUD_Manager.Instance.GetTrinketHUD().SetTrinketSprite(trinket.GetTrinketSprite());
+        trinket.GetComponent<SpriteRenderer>().enabled = false;
         UpdatePlayerStat();
         ++numCurrentTrinkets;
     }
@@ -161,10 +162,12 @@ public class TrinketInventory : MonoBehaviour
         TrinketBag[currentTrinketIndex].gameObject.transform.parent = null;
         TrinketBag[currentTrinketIndex].isOnGround = true;
         TrinketBag[currentTrinketIndex].GetComponent<BoxCollider2D>().enabled = true;
+        TrinketBag[currentTrinketIndex].GetComponent<SpriteRenderer>().enabled = true;
 
         //Add new trinket to current slot
         trinket.isOnGround = false;
         trinket.GetComponent<BoxCollider2D>().enabled = false;
+        trinket.GetComponent<SpriteRenderer>().enabled = false;
         TrinketBag[currentTrinketIndex] = trinket;
         ResetTransform(trinket);
         HUD_Manager.Instance.GetTrinketHUD().SetTrinketSprite(trinket.GetTrinketSprite());
