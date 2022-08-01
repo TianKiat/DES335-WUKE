@@ -913,6 +913,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1747638609}
     m_Modifications:
+    - target: {fileID: 122568199192120387, guid: 2411d9ec21f72614381980792eb5b9d3, type: 3}
+      propertyPath: m_text
+      value: IQ Coins
+      objectReference: {fileID: 0}
     - target: {fileID: 122568199425572019, guid: 2411d9ec21f72614381980792eb5b9d3, type: 3}
       propertyPath: m_Name
       value: HUD_Backing
