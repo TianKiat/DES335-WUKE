@@ -295,8 +295,8 @@ public class PlayerController : MonoBehaviour
 
     public void AddHealth(float healPercentage)
     {
-        Debug.Log("Healing for " + (healPercentage * MaxHealth));
         CurrentHealth += (healPercentage * MaxHealth);
+        healthBar.UpdateHealth(CurrentHealth / MaxHealth);
     }
 
     private void OnInteract()
