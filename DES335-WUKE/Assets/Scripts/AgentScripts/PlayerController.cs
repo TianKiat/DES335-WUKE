@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        holdingCoins = 0;
+        holdingCoins = 200;
 
         input_vec = Vector2.zero;
     }
@@ -245,7 +245,7 @@ public class PlayerController : MonoBehaviour
         {
             // play farting noise and vfx
         }
-        if (CurrentHealth <= 0) ;
+        //if (CurrentHealth <= 0) ;
             //GameManager.Instance.GameOver();
     }
 

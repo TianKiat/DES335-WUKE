@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7996610226214027945}
   - component: {fileID: 6176270690030403181}
   - component: {fileID: 1390825580683056900}
+  - component: {fileID: 3377753350042997177}
+  - component: {fileID: -7551868158033548234}
   m_Layer: 0
   m_Name: Health Orb
   m_TagString: Untagged
@@ -62,6 +64,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46180a55118347149bd021c47ca0d945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &3377753350042997177
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617497626883302719}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 6
+  m_AngularDrag: 100
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &-7551868158033548234
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617497626883302719}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.02
 --- !u!1 &5689490279180258695
 GameObject:
   m_ObjectHideFlags: 0

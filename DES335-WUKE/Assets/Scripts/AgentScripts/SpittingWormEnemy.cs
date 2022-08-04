@@ -18,6 +18,7 @@ public class SpittingWormEnemy : BaseEnemy
     public override void Start()
     {
         base.Start();
+        GameManager.Instance.RegisterEnemy(this);
         GetComponent<Rigidbody2D>().isKinematic = true;
 
         radiusSqr = (range * range);

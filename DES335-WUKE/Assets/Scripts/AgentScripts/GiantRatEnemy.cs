@@ -22,6 +22,7 @@ public class GiantRatEnemy : BaseEnemy
     public override void Start()
     {
         base.Start();
+        GameManager.Instance.RegisterEnemy(this);
         CurrentHealth = MaxHealth = BaseHealth;
     }
 

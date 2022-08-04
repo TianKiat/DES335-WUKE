@@ -54,7 +54,7 @@ public class BaseEnemy : MonoBehaviour
     }
 
     float[] healPercentages = new float[5] { 0.05f, 0.1f, 0.3f, 1.0f, 1.0f };
-    float[] healthOrbDropChance = new float[5] { 0.2f, 0.2f, 0.3f, 1.0f, 1.0f };
+    float[] healthOrbDropChance = new float[5] { 0.25f, 0.25f, 0.35f, 1.0f, 1.0f };
     float[] healthOrbScaleSize = new float[5] { 1.0f, 1.2f, 1.4f, 2.0f, 2.0f };
 
     [SerializeField]
@@ -71,8 +71,7 @@ public class BaseEnemy : MonoBehaviour
 
     public virtual void Start()
     {
-        GameManager.Instance.RegisterEnemy(this);
-        PartyHat.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -138,6 +137,7 @@ public class BaseEnemy : MonoBehaviour
         //Drops a coin
         GameObject go = Instantiate(dreamCoinDropObj, transform.position, transform.rotation);
         go.GetComponent<DreamCoin>().SetAmount(coinDropAmount);
+        go.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle * 8.0f, ForceMode2D.Impulse);
     }
 
     void SpawnHealthOrb()
@@ -150,6 +150,7 @@ public class BaseEnemy : MonoBehaviour
             GameObject go = Instantiate(healthOrbDropObj, transform.position, transform.rotation);
             go.GetComponent<HealthOrb>().SetAmount(healPercentages[(int)enemyTier]);
             go.transform.localScale = new Vector3(healthOrbScaleSize[(int)enemyTier], healthOrbScaleSize[(int)enemyTier], 1.0f);
+            go.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle * 8.0f, ForceMode2D.Impulse);
             Debug.Log("Dropping a tier " + (int)enemyTier);
         }
     }

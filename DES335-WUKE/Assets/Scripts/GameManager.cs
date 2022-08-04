@@ -91,6 +91,12 @@ public class GameManager : MonoBehaviour
 
     public void SetDreamPotEffect(int index)
     {
+        AddDreamToActiveList(index);
+        ActivateDream(index);
+        CloseDreamPot();
+    }
+    public void ActivateDream(int index)
+    {
         switch (index)
         {
             case 0:
@@ -98,7 +104,7 @@ public class GameManager : MonoBehaviour
                     PlayerInstance.ActivateHat();
                     foreach (BaseEnemy enemy in activeEnemies)
                     {
-                            enemy.ActivateHat();
+                        enemy.ActivateHat();
                     }
                 }
                 break;
@@ -147,8 +153,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("This dreampot index is not supported!");
                 break;
         }
-        AddDreamToActiveList(index);
-        CloseDreamPot();
     }
     public void AddDreamToActiveList(int index)
     {
@@ -210,9 +214,15 @@ public class GameManager : MonoBehaviour
     {
         spawnPoint = GameObject.FindGameObjectWithTag("Spawn Point").GetComponent<Transform>();
         PlayerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
         foreach (var stat in PlayerStats)
         {
             PlayerInstance.SetStat(stat.Key, stat.Value);
+        }
+
+        foreach (var dream in ActiveDreams)
+        {
+            ActivateDream(dream);
         }
         PlayerInstance.SetCurrentHealth(PlayerCurrentHealth);
         PlayerInstance.transform.position = spawnPoint.transform.position;
