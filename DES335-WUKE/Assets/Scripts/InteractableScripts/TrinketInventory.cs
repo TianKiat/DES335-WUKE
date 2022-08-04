@@ -97,6 +97,8 @@ public class TrinketInventory : MonoBehaviour
         //Additional Opt
         float finalOpt = GameManager.Instance.PlayerInstance.GetStat("opt") * TrinketBag[currentTrinketIndex].GetOptModifier();
         GameManager.Instance.PlayerInstance.SetAddStat("opt", (int)finalOpt);
+
+        HUD_Manager.Instance.UpdateHUD();
     }
 
     public void AddTrinketToInventory(Trinket trinket, ref float playerCurrency)

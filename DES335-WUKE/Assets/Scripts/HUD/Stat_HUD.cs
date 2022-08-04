@@ -19,9 +19,9 @@ public class Stat_HUD : MonoBehaviour
 
     public void UpdateStatsDisplay()
     {
-        m_STB_Text.text = ": " + GameManager.Instance.PlayerInstance.GetStat("stb").ToString();
-        m_LCD_Text.text = ": " + GameManager.Instance.PlayerInstance.GetStat("lcd").ToString();
-        m_COG_Text.text = ": " + GameManager.Instance.PlayerInstance.GetStat("cog").ToString();
-        m_OPT_Text.text = ": " + GameManager.Instance.PlayerInstance.GetStat("opt").ToString();
+        m_STB_Text.text = ": " + (GameManager.Instance.PlayerInstance.GetStat("stb") + GameManager.Instance.PlayerInstance.GetAddStat("stb")).ToString();
+        m_LCD_Text.text = ": " + (GameManager.Instance.PlayerInstance.GetStat("lcd") + GameManager.Instance.PlayerInstance.GetAddStat("lcd")).ToString();
+        m_COG_Text.text = ": " + (GameManager.Instance.PlayerInstance.GetStat("cog") + GameManager.Instance.PlayerInstance.GetAddStat("cog")).ToString();
+        m_OPT_Text.text = ": " + (GameManager.Instance.PlayerInstance.GetStat("opt") + GameManager.Instance.PlayerInstance.GetAddStat("opt")).ToString();
     }
 }

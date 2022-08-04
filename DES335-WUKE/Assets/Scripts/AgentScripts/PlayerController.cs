@@ -197,6 +197,11 @@ public class PlayerController : MonoBehaviour
         return BaseStats[statName];
     }
 
+    public int GetAddStat(string statName)
+    {
+        return AddStats[statName];
+    }
+
     public void SetStat(string statName, int newValue)
     {
         BaseStats[statName] = newValue;
