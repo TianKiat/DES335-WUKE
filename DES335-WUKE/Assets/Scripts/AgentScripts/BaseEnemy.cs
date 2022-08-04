@@ -71,7 +71,7 @@ public class BaseEnemy : MonoBehaviour
 
     public virtual void Start()
     {
-        
+        GameManager.Instance.RegisterEnemy(this);
     }
 
     // Update is called once per frame

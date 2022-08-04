@@ -22,7 +22,6 @@ public class WormEnemy : BaseEnemy
     public override void Start()
     {
         base.Start();
-        GameManager.Instance.RegisterEnemy(this);
         fsm.ChangeState(States.Patrol);
         CurrentHealth = MaxHealth = BaseHealth;
 

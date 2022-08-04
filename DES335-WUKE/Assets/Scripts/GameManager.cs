@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     //this is to track all active dreams in the game
     private List<int> ActiveDreams = new List<int>();
 
-    List<BaseEnemy> activeEnemies = new List<BaseEnemy>();
+    public List<BaseEnemy> activeEnemies = new List<BaseEnemy>();
 
     private int levelsCleared;
     public const float levelClearBonus = 0.01f;
